@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ГЦ «ТЦСОН» — Главная</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed-variant": "#354a53",
+              "on-tertiary": "#ffffff",
+              "on-primary-fixed-variant": "#92001e",
+              "on-primary-fixed": "#410007",
+              "surface-container-low": "#f3f3f3",
+              "secondary": "#1b6d24",
+              "on-secondary-fixed": "#002204",
+              "primary": "#990320",
+              "on-primary-container": "#ffd5d4",
+              "outline-variant": "#e2bebd",
+              "tertiary-fixed": "#cfe6f2",
+              "inverse-primary": "#ffb3b1",
+              "secondary-fixed-dim": "#88d982",
+              "on-surface": "#1a1c1c",
+              "surface-container-high": "#e8e8e8",
+              "on-tertiary-fixed": "#071e27",
+              "on-error-container": "#93000a",
+              "surface-tint": "#b62131",
+              "error": "#ba1a1a",
+              "on-secondary-fixed-variant": "#005312",
+              "secondary-container": "#a0f399",
+              "tertiary-fixed-dim": "#b4cad6",
+              "surface-dim": "#dadada",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-highest": "#e2e2e2",
+              "surface-container": "#eeeeee",
+              "tertiary": "#394e58",
+              "surface": "#f9f9f9",
+              "primary-fixed": "#ffdad8",
+              "on-tertiary-container": "#cde3ef",
+              "on-secondary": "#ffffff",
+              "on-background": "#1a1c1c",
+              "inverse-surface": "#2f3131",
+              "tertiary-container": "#516670",
+              "surface-variant": "#e2e2e2",
+              "primary-fixed-dim": "#ffb3b1",
+              "surface-bright": "#f9f9f9",
+              "on-primary": "#ffffff",
+              "inverse-on-surface": "#f1f1f1",
+              "secondary-fixed": "#a3f69c",
+              "on-surface-variant": "#5a4040",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "outline": "#8e706f",
+              "on-secondary-container": "#217128",
+              "background": "#f9f9f9",
+              "primary-container": "#bc2635"
+            },
+            fontFamily: {
+              "headline": ["Public Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Public Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary/20">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-8 flex justify-between items-center h-20">
+<!-- Brand -->
+<div class="text-2xl font-black text-red-800 dark:text-red-500 uppercase tracking-tighter">
+                ГЦ ТЦСОН
+            </div>
+<!-- Links (Desktop) -->
+<div class="hidden md:flex gap-8 font-['Public_Sans'] tracking-tight text-sm font-semibold">
+<a class="text-red-800 dark:text-red-400 border-b-2 border-red-800 dark:border-red-400 pb-1" href="#">Услуги</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-red-700 dark:hover:text-red-300 transition-colors" href="#">Новости</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-red-700 dark:hover:text-red-300 transition-colors" href="#">О нас</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-red-700 dark:hover:text-red-300 transition-colors" href="#">Контакты</a>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center gap-4 text-slate-500">
+<button class="hover:bg-red-50 p-2 rounded-md transition-all">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="hover:bg-red-50 p-2 rounded-md transition-all">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+<button class="hover:bg-red-50 p-2 rounded-md transition-all">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+</button>
+</div>
+<button class="scale-95 active:scale-90 duration-200 bg-primary text-on-primary px-6 py-2.5 rounded-md font-['Public_Sans'] text-sm font-semibold shadow-sm">
+                    Связаться с нами
+                </button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative pt-40 pb-24 overflow-hidden">
+<div class="max-w-7xl mx-auto px-8 relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7">
+<h1 class="text-6xl md:text-7xl font-black tracking-tighter text-on-surface mb-8 leading-[0.95]">
+                        Ваша поддержка в <span class="text-primary italic">любой</span> ситуации.
+                    </h1>
+<p class="text-xl text-on-surface-variant max-w-xl mb-12 leading-relaxed">
+                        Мы обеспечиваем комплексную социальную помощь, заботу и психологическую поддержку для жителей нашего города. Достоинство и внимание — каждому.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary px-10 py-5 rounded-md font-bold tracking-tight hover:bg-on-primary-fixed-variant transition-colors flex items-center gap-3">
+                            Подать заявку
+                            <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="bg-surface-container-low text-primary px-10 py-5 rounded-md font-bold tracking-tight hover:bg-surface-container-high transition-colors">
+                            Узнать об услугах
+                        </button>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-high">
+<img alt="Social Care" class="w-full h-full object-cover" data-alt="Elderly person holding hands with a social worker" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4ULQ0WSmw584Q3PvQ9Drixr-6Qbnyke3aq4funsoTay8KKEkpogM5ZYz3MMNlV1Df_rnsOhkA1prMtQJBzgOaW0RTKpMbMRxVG9eSq7p6tIRI0zAJJuWiY1nhY5qSn2upFLLL1KDS9ckNxSydtllwScuHTLFj0Ic8zTtWvepdGz8Z-ZYYo4P-JoFVADZDUcviRQqX3Jlh9dThBYayt81b2QcWh7-jJm1RjQs2cw_mfAeFxw2mRM7zriY1OXm9mwU-lvi1Lo1vvbYL"/>
+</div>
+<!-- Editorial Overlap Accent -->
+<div class="absolute -bottom-6 -left-6 bg-secondary text-on-secondary p-8 rounded-lg shadow-xl hidden md:block">
+<span class="block text-4xl font-black mb-1">15+</span>
+<span class="text-xs uppercase tracking-widest font-bold opacity-80">лет заботы о гражданах</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative Background Element -->
+<div class="absolute top-0 right-0 w-1/2 h-full bg-surface-container-low -z-10 translate-x-1/4 skew-x-12 opacity-50"></div>
+</header>
+<!-- Quick Services Bento Grid -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-8">
+<div class="mb-16">
+<h2 class="text-4xl font-extrabold tracking-tight mb-4">Популярные услуги</h2>
+<div class="h-1 w-20 bg-secondary"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Service Cards -->
+<div class="bg-surface-container-lowest p-8 rounded-xl group hover:bg-primary transition-all duration-300">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary text-4xl mb-6" data-icon="elderly">elderly</span>
+<h3 class="text-xl font-bold mb-3 group-hover:text-on-primary">Долговременный уход</h3>
+<p class="text-sm text-on-surface-variant group-hover:text-on-primary/80">Помощь пожилым людям и лицам с ограниченными возможностями.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl group hover:bg-primary transition-all duration-300">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary text-4xl mb-6" data-icon="home_health">home_health</span>
+<h3 class="text-xl font-bold mb-3 group-hover:text-on-primary">Соцпомощь на дому</h3>
+<p class="text-sm text-on-surface-variant group-hover:text-on-primary/80">Доставка продуктов, лекарств и помощь в ведении хозяйства.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl group hover:bg-primary transition-all duration-300">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary text-4xl mb-6" data-icon="diversity_3">diversity_3</span>
+<h3 class="text-xl font-bold mb-3 group-hover:text-on-primary">Отделение дневного пребывания</h3>
+<p class="text-sm text-on-surface-variant group-hover:text-on-primary/80">Организация досуга и реабилитационных мероприятий.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl group hover:bg-primary transition-all duration-300">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary text-4xl mb-6" data-icon="wheelchair_pickup">wheelchair_pickup</span>
+<h3 class="text-xl font-bold mb-3 group-hover:text-on-primary">Прокат оборудования</h3>
+<p class="text-sm text-on-surface-variant group-hover:text-on-primary/80">Средства реабилитации: коляски, ходунки, трости.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl group hover:bg-primary transition-all duration-300">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary text-4xl mb-6" data-icon="psychology">psychology</span>
+<h3 class="text-xl font-bold mb-3 group-hover:text-on-primary">Психологическая поддержка</h3>
+<p class="text-sm text-on-surface-variant group-hover:text-on-primary/80">Индивидуальные и групповые консультации специалистов.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl group hover:bg-primary transition-all duration-300">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary text-4xl mb-6" data-icon="volunteer_activism">volunteer_activism</span>
+<h3 class="text-xl font-bold mb-3 group-hover:text-on-primary">Гуманитарная помощь</h3>
+<p class="text-sm text-on-surface-variant group-hover:text-on-primary/80">Вещевая и продуктовая поддержка нуждающихся категорий.</p>
+</div>
+<div class="lg:col-span-2 bg-secondary-container p-8 rounded-xl flex items-center justify-between">
+<div>
+<h3 class="text-2xl font-black text-on-secondary-container mb-2">Все услуги</h3>
+<p class="text-on-secondary-container opacity-80">Ознакомьтесь с полным перечнем государственных услуг учреждения.</p>
+</div>
+<button class="w-12 h-12 rounded-full bg-secondary text-on-secondary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Important Information Banner -->
+<section class="max-w-7xl mx-auto px-8 py-12">
+<div class="bg-primary-container p-10 rounded-xl relative overflow-hidden flex flex-col md:flex-row items-center gap-8">
+<div class="relative z-10 flex-1">
+<span class="inline-block bg-primary text-on-primary px-3 py-1 text-xs font-bold rounded mb-4 uppercase tracking-widest">Важное</span>
+<h3 class="text-3xl font-black text-on-primary-fixed mb-2">Изменение графика в праздничные дни</h3>
+<p class="text-on-primary-fixed-variant max-w-2xl">Обращаем ваше внимание, что с 1 по 9 мая центр работает по сокращенному графику. Дежурные службы доступны круглосуточно.</p>
+</div>
+<button class="relative z-10 bg-on-primary-fixed text-white px-8 py-4 rounded-md font-bold whitespace-nowrap">Подробнее</button>
+<div class="absolute right-0 top-0 opacity-10 translate-x-1/4 -translate-y-1/4">
+<span class="material-symbols-outlined text-[200px]" data-icon="notifications_active">notifications_active</span>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-24">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex flex-col lg:flex-row gap-20 items-center">
+<div class="lg:w-1/2">
+<div class="relative">
+<img alt="Community Center" class="w-full h-[500px] object-cover rounded-xl" data-alt="Modern community center interior with warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpR9AsIAWSCiw0rL2rMXOm2Cs31GTsCVHrvyWkqY8s3S-dtSunC61G0gShWoKapfiOKlYGf4YPxzoJKD_BZH0QzrMV1bgidMplDTbqv0POrKPZJWyt23XQh_PQ2FclNP_3FDcra_a5o0O8FEgLgdMd3_48xD-8fq7XQO2OCHm6urn1n71dsqYXGmM6Ey4_Y0edh1ERti6qcLoGieQd8wdXL29ZYDNRAw0PNWlq5z1xO_Wp8atuiJPU5vmgDdjSOFh6oZnHRfmrI8eO"/>
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-outline-variant/20 rounded-full blur-3xl -z-10"></div>
+</div>
+</div>
+<div class="lg:w-1/2">
+<span class="text-primary font-bold uppercase tracking-[0.2em] text-sm block mb-4">О Нашем Учреждении</span>
+<h2 class="text-5xl font-black tracking-tighter mb-8 leading-tight">Мы создаем доступную среду для каждого.</h2>
+<p class="text-lg text-on-surface-variant mb-8 leading-relaxed">
+                        Государственное учреждение «Территориальный центр социального обслуживания населения» является ключевым звеном в системе социальной защиты. Наша миссия — оказание адресной помощи, внедрение новых социальных технологий и поддержка активного долголетия.
+                    </p>
+<div class="space-y-6 mb-10">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<div>
+<h4 class="font-bold">Сертифицированные специалисты</h4>
+<p class="text-sm text-on-surface-variant">Более 100 квалифицированных социальных работников и психологов.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="public" style="font-variation-settings: 'FILL' 1;">public</span>
+<div>
+<h4 class="font-bold">Открытость и прозрачность</h4>
+<p class="text-sm text-on-surface-variant">Регулярная отчетность и электронное взаимодействие с гражданами.</p>
+</div>
+</div>
+</div>
+<button class="text-primary font-bold border-b-2 border-primary/20 hover:border-primary pb-1 transition-all">Узнать больше о нас</button>
+</div>
+</div>
+</div>
+</section>
+<!-- News Section -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex justify-between items-end mb-16">
+<div>
+<h2 class="text-4xl font-extrabold tracking-tight">Новости и анонсы</h2>
+</div>
+<button class="text-slate-500 hover:text-primary transition-colors flex items-center gap-2">
+                    Все новости <span class="material-symbols-outlined" data-icon="east">east</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- News Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden flex flex-col hover:translate-y-[-4px] transition-transform duration-300">
+<div class="h-48 bg-slate-200">
+<img alt="News item" class="w-full h-full object-cover" data-alt="Volunteer distribution of food and aid" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB69Id3uFPVeqTdwqTQZDUICtantb7YIvBI32QEEBC2PYPp28ETq8VZyzCHRVazXOSG6DXvYPqIs-EhBmDmV79EEe2VcV4yuExQ3dwHjMDyUXDlg5wr9PRe43-iQrIPzCbRnBX3M4rI875TEHXEf8yrL0Lcwmag1ysqJFIjIi8Wv42fydwaisPxFTadiwwMWXwUULvCmIckUTHXCpgfFmFyw_DJ9oQzFUHf4T2gA1fDzFp_XyB-Uii5qYWTbQVlg8r9CzLMKd8A1OJx"/>
+</div>
+<div class="p-8 flex flex-col flex-1">
+<time class="text-xs font-bold text-primary mb-3">12 ОКТЯБРЯ 2026</time>
+<h3 class="text-xl font-bold mb-4 leading-snug">Запуск программы «Серебряное волонтерство»</h3>
+<p class="text-sm text-on-surface-variant mb-6 flex-1">Стартует новый проект по вовлечению пожилых людей в активную общественную деятельность и помощь нуждающимся.</p>
+<a class="text-xs font-black uppercase tracking-widest text-on-surface flex items-center gap-2" href="#">Читать <span class="material-symbols-outlined text-sm" data-icon="open_in_new">open_in_new</span></a>
+</div>
+</article>
+<!-- News Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden flex flex-col hover:translate-y-[-4px] transition-transform duration-300">
+<div class="h-48 bg-slate-200">
+<img alt="News item" class="w-full h-full object-cover" data-alt="Medical team helping an elderly person" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIsgnfUolAYg_AMPYXFlIYliNY0JRSf2N5_ZnEJU_wufEFR4NWzs7_xsJa-cZPxxrbzK3OqDMNurpZ2rCpiX6m9tsjU8C0DICGK6ymSTN0SfZoG9S6S43bnuE2Exr-tDPN2IUOG-EHv509qhkn5QpRbK6--umwfGdIc64MI-Cmyh0wQZJls1gS7bgYf36njcB1K-2_uDETzCmJ5DjX6krrIcR_42GcEeD6fZ4BLTSzHQ2rT5N49EAOzxrmfF4OgBFZDIJRWuokcYNz"/>
+</div>
+<div class="p-8 flex flex-col flex-1">
+<time class="text-xs font-bold text-primary mb-3">08 ОКТЯБРЯ 2026</time>
+<h3 class="text-xl font-bold mb-4 leading-snug">Новые средства реабилитации в пункте проката</h3>
+<p class="text-sm text-on-surface-variant mb-6 flex-1">Фонд пункта проката пополнился современными многофункциональными кроватями и электрическими подъемниками.</p>
+<a class="text-xs font-black uppercase tracking-widest text-on-surface flex items-center gap-2" href="#">Читать <span class="material-symbols-outlined text-sm" data-icon="open_in_new">open_in_new</span></a>
+</div>
+</article>
+<!-- News Card 3 -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden flex flex-col hover:translate-y-[-4px] transition-transform duration-300">
+<div class="h-48 bg-slate-200">
+<img alt="News item" class="w-full h-full object-cover" data-alt="People sitting in a bright office meeting room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3jH3IpyqU1y8kMozHyDN16M9l4rMUwNe38xQkkwlcItrglegpVSd_537f8WFJe933P-R-g4cCPHkGFdfmvly-tfaLYbhzdoDFVDQwRWAfMR5PyQr2Y1ygLjvr286wNXPyBMjLH5jh5TC6JC2o8ZsO5sj3WmE7ZlnCqHZB3-tHhEqr7_OegaSbKc362sy2du-gVwHbdhV9xK-uFc5dBXh_7yslXMX1le7tVvf1P1VRoy5kyt1LlFjMYEvK9i-0rZPo-Va9Bfrz88xZ"/>
+</div>
+<div class="p-8 flex flex-col flex-1">
+<time class="text-xs font-bold text-primary mb-3">05 ОКТЯБРЯ 2026</time>
+<h3 class="text-xl font-bold mb-4 leading-snug">Семинар для опекунов и попечителей</h3>
+<p class="text-sm text-on-surface-variant mb-6 flex-1">Приглашаем на бесплатный обучающий семинар по вопросам юридической и психологической поддержки в семье.</p>
+<a class="text-xs font-black uppercase tracking-widest text-on-surface flex items-center gap-2" href="#">Читать <span class="material-symbols-outlined text-sm" data-icon="open_in_new">open_in_new</span></a>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- Contacts & Map Section -->
+<section class="py-24">
+<div class="max-w-7xl mx-auto px-8">
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden flex flex-col lg:flex-row shadow-sm">
+<div class="lg:w-1/2 p-12 lg:p-20">
+<h2 class="text-4xl font-extrabold mb-12">Свяжитесь с нами</h2>
+<div class="space-y-10">
+<div class="flex items-start gap-6">
+<span class="material-symbols-outlined text-primary p-3 bg-red-50 rounded-lg" data-icon="location_on">location_on</span>
+<div>
+<h4 class="font-bold mb-1">Адрес учреждения</h4>
+<p class="text-on-surface-variant">ул. Парковая, д. 15, г. Минск, Республика Беларусь</p>
+</div>
+</div>
+<div class="flex items-start gap-6">
+<span class="material-symbols-outlined text-primary p-3 bg-red-50 rounded-lg" data-icon="call">call</span>
+<div>
+<h4 class="font-bold mb-1">Телефоны</h4>
+<p class="text-on-surface-variant font-medium">+375 (17) 200-00-01 — Приемная</p>
+<p class="text-on-surface-variant font-medium">+375 (17) 200-00-02 — Горячая линия</p>
+</div>
+</div>
+<div class="flex items-start gap-6">
+<span class="material-symbols-outlined text-primary p-3 bg-red-50 rounded-lg" data-icon="schedule">schedule</span>
+<div>
+<h4 class="font-bold mb-1">График работы</h4>
+<p class="text-on-surface-variant">Пн – Пт: 08:00 – 18:00</p>
+<p class="text-on-surface-variant italic text-sm">Обед: 13:00 – 14:00</p>
+<p class="text-on-surface-variant">Сб, Вс: Выходной</p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:w-1/2 bg-slate-100 relative min-h-[400px]">
+<img alt="Map Location" class="w-full h-full object-cover" data-alt="Aerial view of city street map" data-location="Minsk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBznUNIevJsrOoFSlI3IMDNhQMRenZnzVd_xMcQt74dVq8RtWZsjcgrXiyDRPC4nLc7zYmtgg-n8S_1db65keEhwZOM-ZJ2rw9UVyWeBnY9K911n_jKS9D90PfyPpz0tlnvHJ4YPe1PyfXQE9r4qiOzWI2rKRCcTOnDfJ3HBlPvFfocSgKue8t2lWByBabAf_Td8YmygFoFRtVPulBRapS-KvV1yD1h3cMK0CMLzZyxS983EoLYQUKYwC2fmuqIF0BXt58XKCED7590"/>
+<!-- Stylized Overlay Map -->
+<div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-12 h-12 bg-primary rounded-full animate-ping absolute opacity-40"></div>
+<div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white relative shadow-lg">
+<span class="material-symbols-outlined" data-icon="pin_drop" style="font-variation-settings: 'FILL' 1;">pin_drop</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-16 border-t border-transparent bg-slate-100 dark:bg-slate-950">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-1">
+<div class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-6 uppercase">ГЦ ТЦСОН</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6">Государственное учреждение поддержки и социального развития граждан.</p>
+<div class="flex gap-4">
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined" data-icon="share">share</span></a>
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined" data-icon="alternate_email">alternate_email</span></a>
+</div>
+</div>
+<div class="col-span-1">
+<h5 class="font-bold text-slate-900 mb-6 text-sm uppercase tracking-wider">Разделы</h5>
+<ul class="space-y-4 font-['Inter'] text-sm leading-relaxed">
+<li><a class="text-slate-500 hover:text-slate-900 transition-opacity underline decoration-red-800/30 underline-offset-4" href="#">Официальные документы</a></li>
+<li><a class="text-slate-500 hover:text-slate-900 transition-opacity underline decoration-red-800/30 underline-offset-4" href="#">Политика конфиденциальности</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h5 class="font-bold text-slate-900 mb-6 text-sm uppercase tracking-wider">Помощь</h5>
+<ul class="space-y-4 font-['Inter'] text-sm leading-relaxed">
+<li><a class="text-slate-500 hover:text-slate-900 transition-opacity underline decoration-red-800/30 underline-offset-4" href="#">Карта сайта</a></li>
+<li><a class="text-slate-500 hover:text-slate-900 transition-opacity underline decoration-red-800/30 underline-offset-4" href="#">Электронные обращения</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h5 class="font-bold text-slate-900 mb-6 text-sm uppercase tracking-wider">Подписаться</h5>
+<p class="text-xs text-slate-500 mb-4">Получайте важные новости и обновления центра на почту.</p>
+<div class="flex gap-2">
+<input class="bg-surface-container text-xs p-2 rounded border-none w-full focus:ring-1 focus:ring-primary" placeholder="Email" type="email"/>
+<button class="bg-primary text-white p-2 rounded"><span class="material-symbols-outlined text-sm" data-icon="send">send</span></button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 mt-16 pt-8 border-t border-slate-200">
+<p class="text-xs text-slate-400 font-['Inter'] text-sm leading-relaxed">© 2026 ГУ ТЦСОН. Все права защищены.</p>
+</div>
+</footer>
+<!-- Visual Identity Pattern Strip -->
+<div class="h-10 w-full opacity-10" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, #e2bebd 10px, #e2bebd 20px);"></div>
+</body></html>

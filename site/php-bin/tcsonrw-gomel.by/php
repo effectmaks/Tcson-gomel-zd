@@ -1,0 +1,6 @@
+#!/bin/sh
+PHP_INI_SCAN_DIR='/var/www/user5233/data/php-bin/tcsonrw-gomel.by:'
+PHPRC='/var/www/user5233/data/php-bin'
+export PHP_INI_SCAN_DIR
+export PHPRC
+exec /usr/bin/php-cgi

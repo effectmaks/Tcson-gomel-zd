@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ГУ «ТЦСОН»</title>
+  <meta
+    name="description"
+    content="Официальный сайт ТЦСОН: информация об учреждении, отделениях, услугах, новостях и контактах."
+  >
+  <meta name="theme-color" content="#bc2635">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="site-bg" aria-hidden="true">
+    <div class="site-bg__shape site-bg__shape--blue"></div>
+    <div class="site-bg__shape site-bg__shape--orange"></div>
+  </div>
+
+  <header class="site-header" id="top">
+    <div class="header-top">
+      <div class="container header-top__inner">
+        <a class="brand" href="#top" aria-label="На главную">
+          <span class="brand__mark" aria-hidden="true">ГУ</span>
+          <span class="brand__text">
+            <span>Государственное учреждение</span>
+            <strong>Территориальный центр социального обслуживания населения</strong>
+          </span>
+        </a>
+
+        <div class="header-top__actions">
+          <button
+            class="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="main-nav"
+            aria-label="Открыть меню"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <button
+            class="vision-toggle"
+            type="button"
+            aria-pressed="false"
+            aria-label="Версия для слабовидящих"
+            title="Версия для слабовидящих"
+          >
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M2 12C3.8 8.8 7.2 6 12 6C16.8 6 20.2 8.8 22 12C20.2 15.2 16.8 18 12 18C7.2 18 3.8 15.2 2 12Z"></path>
+              <circle cx="12" cy="12" r="3.2"></circle>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-nav">
+      <div class="container">
+        <nav class="site-nav" id="main-nav" aria-label="Основная навигация">
+          <details class="site-nav__item">
+            <summary>О центре</summary>
+            <div class="site-subnav">
+              <a href="#about">История</a>
+              <a href="#divisions">Структура</a>
+              <a href="#contacts">Руководство</a>
+              <a href="#about">График работы</a>
+              <a href="#contacts">Вышестоящие организации</a>
+              <a href="#request">Административные процедуры</a>
+              <a href="#gallery">Фотогалерея</a>
+              <a href="#services">НПА по вопросам социального обслуживания</a>
+              <a href="#news">Гуманитарное сотрудничество</a>
+            </div>
+          </details>
+
+          <details class="site-nav__item">
+            <summary>Отделения</summary>
+            <div class="site-subnav">
+              <a href="#divisions">Отделение первичного приёма, информации, анализа и прогнозирования</a>
+              <a href="#divisions">Отделение социальной помощи на дому</a>
+              <a href="#divisions">Отделение социальной реабилитации, абилитации инвалидов, обеспечения дневного пребывания для граждан пожилого возраста и комплексной поддержки в кризисной ситуации</a>
+              <a href="#divisions">Филиал №1</a>
+              <a href="#divisions">Филиал №2</a>
+              <a href="#divisions">Социальные приёмные, стационарный социальный пункт</a>
+            </div>
+          </details>
+
+          <details class="site-nav__item">
+            <summary>Наши услуги</summary>
+            <div class="site-subnav">
+              <a href="#services">Условия и порядок оказания социальных услуг</a>
+              <a href="#services">Социальные услуги, входящие в Перечень</a>
+              <a href="#services">Социальные услуги, не входящие в Перечень</a>
+              <a href="#services">Услуги няни</a>
+              <a href="#services">Услуги сиделки</a>
+              <a href="#services">Дневной присмотр</a>
+              <a href="#services">Рента</a>
+              <a href="#services">Оформление документов в дома-интернаты</a>
+              <a href="#services">Социальное обслуживание в замещающей семье</a>
+              <a href="#services">Прокат и обеспечение техническими средствами социальной реабилитации</a>
+              <a href="#services">Сопровождение детей-сирот</a>
+              <a href="#services">Социальный патронат</a>
+              <a href="#services">Услуга «Социальная передышка»</a>
+              <a href="#services">Услуги персонального ассистента</a>
+              <a href="#services">Услуга временного приюта, кризисная комната</a>
+              <a href="#services">Услуги психолога</a>
+              <a href="#services">Услуги юриста</a>
+              <a href="#services">Гуманитарная помощь: салон «Милосердие»</a>
+              <a href="#services">Выездные услуги парикмахера на дому</a>
+              <a href="#services">Разовые услуги</a>
+              <a href="#services">Перечень социальных услуг ТЦСОН</a>
+              <a href="#services">Долговременный уход</a>
+            </div>
+          </details>
+
+          <details class="site-nav__item">
+            <summary>Социальная поддержка</summary>
+            <div class="site-subnav">
+              <a href="#menu">Антикоррупционная деятельность</a>
+              <a href="#menu">Государственная адресная социальная помощь</a>
+              <a href="#menu">Льготы</a>
+              <a href="#menu">Материальная помощь</a>
+              <a href="#menu">Противодействие торговле людьми</a>
+              <a href="#menu">Профилактика домашнего насилия</a>
+              <a href="#menu">Профилактика киберпреступлений</a>
+              <a href="#menu">Covid-19</a>
+              <a href="#menu">Активное долголетие - 2030</a>
+              <a href="#menu">Социальная реклама</a>
+              <a href="#menu">Безопасность жизнедеятельности</a>
+              <a href="#menu">МЧС информирует</a>
+              <a href="#menu">Республиканский центр психологической помощи</a>
+              <a href="#menu">Профилактика зависимостей</a>
+              <a href="#menu">Единый день информирования</a>
+              <a href="#menu">Карта помощи несовершеннолетним, пострадавшим от сексуального насилия</a>
+            </div>
+          </details>
+
+          <a href="#news">Новости</a>
+
+          <details class="site-nav__item">
+            <summary>Контакты</summary>
+            <div class="site-subnav">
+              <a href="#request">Электронные обращения граждан и юрлиц</a>
+              <a href="#contacts">Контактная информация</a>
+              <a href="#contacts">Call-центр</a>
+            </div>
+          </details>
+
+          <details class="site-nav__item">
+            <summary>Госсоцподдержка инвалидов</summary>
+            <div class="site-subnav">
+              <a href="#menu">НПА по защите прав и законных интересов инвалидов</a>
+              <a href="#menu">Льготы людям с инвалидностью</a>
+              <a href="#menu">Материалы на ясном языке</a>
+              <a href="#menu">Этика общения с незрячими людьми</a>
+              <a href="#menu">Сотрудничество с общественными объединениями инвалидов</a>
+              <a href="#menu">Межведомственный совет по правам инвалидов</a>
+              <a href="#menu">Оказание ситуационной помощи инвалидам</a>
+              <a href="#menu">Региональная карта социальных контактов</a>
+              <a href="#menu">Уроки жестового языка</a>
+              <a href="#menu">Доступная среда</a>
+              <a href="#menu">Правила оказания ситуационной помощи инвалидам с нарушением слуха</a>
+              <a href="#menu">Технические средства социальной реабилитации</a>
+              <a href="#menu">Центр приема – передачи сообщений от лиц с нарушением слуха в экстренные и иные службы</a>
+              <a href="#menu">Общественная приёмная</a>
+              <a href="#menu">Социальные гарантии и государственная поддержка семей, воспитывающих детей-инвалидов</a>
+            </div>
+          </details>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero hero--institution" id="about">
+      <div class="container hero__grid">
+        <div class="hero__content reveal">
+          <p class="section-kicker">Официальный сайт учреждения</p>
+          <p class="hero__lead">
+            Мы приветствуем Вас на сайте ТЦСОН и собрали здесь основную
+            информацию об услугах, обращениях и работе учреждения.
+          </p>
+          <p class="hero__lead hero__lead--secondary">
+            Если Вы оказались в трудной жизненной ситуации, которая объективно
+            нарушила нормальную жизнедеятельность и сложна для самостоятельного
+            разрешения, Вы всегда можете обратиться к нам.
+          </p>
+
+          <div class="hero-contact-bar" aria-label="Основные контакты учреждения">
+            <article class="hero-contact-bar__item">
+              <span>Контактный телефон</span>
+              <strong>8 (00000) 0-00-01</strong>
+            </article>
+            <article class="hero-contact-bar__item">
+              <span>Горячая линия</span>
+              <strong>8 (00000) 0-00-02</strong>
+            </article>
+            <article class="hero-contact-bar__item">
+              <span>Email</span>
+              <strong>info@tcson.by</strong>
+            </article>
+          </div>
+
+          <div class="hero__actions">
+            <a class="button button--primary" href="#divisions">Наши подразделения</a>
+            <a class="button button--secondary" href="#request">Электронное обращение</a>
+          </div>
+
+          <div class="hero-overview">
+            <div class="hero-overview__schedule">
+              <p class="hero-overview__label">График работы</p>
+              <div class="hero-overview__days" aria-label="Рабочие дни">
+                <span>пн</span>
+                <span>вт</span>
+                <span>ср</span>
+                <span>чт</span>
+                <span>пт</span>
+                <span>сб</span>
+              </div>
+              <strong>пн-пт 08:00-13:00 14:00-17:00</strong>
+              <strong>08:00-13:00</strong>
+            </div>
+
+            <article class="hero-card hero-card--primary">
+              <p class="hero-card__label">Основные контакты</p>
+              <div class="schedule-list">
+                <div>
+                  <span>Адрес</span>
+                  <strong>г. Городской центр, ул. Центральная, д. 10</strong>
+                </div>
+                <div>
+                  <span>Email</span>
+                  <strong>info@tcson.by</strong>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <aside class="hero__visual reveal reveal--delay" aria-label="Фотографии учреждения и района">
+          <div class="media-carousel media-carousel--hero" data-carousel data-autoplay="5500">
+            <div class="media-carousel__viewport">
+              <div class="media-carousel__track">
+                <figure class="media-slide">
+                  <div class="media-placeholder media-placeholder--hero" aria-hidden="true"></div>
+                  <figcaption>Информационные инициативы и официальные тематические кампании учреждения.</figcaption>
+                </figure>
+                <figure class="media-slide">
+                  <div class="media-placeholder media-placeholder--hero" aria-hidden="true"></div>
+                  <figcaption>Официальная информация, полезные материалы и спокойная визуальная подача собраны в одном пространстве.</figcaption>
+                </figure>
+                <figure class="media-slide">
+                  <div class="media-placeholder media-placeholder--hero" aria-hidden="true"></div>
+                  <figcaption>Социальная поддержка строится вокруг внимания, заботы и адресной помощи людям.</figcaption>
+                </figure>
+                <figure class="media-slide">
+                  <div class="media-placeholder media-placeholder--hero" aria-hidden="true"></div>
+                  <figcaption>Коллектив центра и социальные проекты в общественном пространстве.</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <div class="media-carousel__controls">
+              <button class="media-carousel__button" type="button" data-carousel-prev aria-label="Предыдущий слайд">Назад</button>
+              <div class="media-carousel__dots" aria-label="Навигация по слайдам">
+                <button type="button" data-carousel-dot aria-label="Слайд 1"></button>
+                <button type="button" data-carousel-dot aria-label="Слайд 2"></button>
+                <button type="button" data-carousel-dot aria-label="Слайд 3"></button>
+                <button type="button" data-carousel-dot aria-label="Слайд 4"></button>
+              </div>
+              <button class="media-carousel__button" type="button" data-carousel-next aria-label="Следующий слайд">Вперёд</button>
+            </div>
+          </div>
+
+        </aside>
+      </div>
+    </section>
+
+    <section class="section section--menu" id="menu">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker">Разделы сайта</p>
+          <h2>Структура меню по основным направлениям работы центра</h2>
+          <p>
+            В разделе представлены сведения об учреждении, работе отделений,
+            социальных услугах, мерах поддержки, новостях и контактах.
+          </p>
+        </div>
+
+        <div class="menu-catalog">
+          <article class="menu-card reveal">
+            <p class="menu-card__eyebrow">О центре</p>
+            <h3>Информация об учреждении</h3>
+            <ul>
+              <li>История</li>
+              <li>Структура</li>
+              <li>Руководство</li>
+              <li>Вышестоящие организации</li>
+            </ul>
+          </article>
+
+          <article class="menu-card reveal reveal--delay">
+            <p class="menu-card__eyebrow">Отделения</p>
+            <h3>Подразделения центра</h3>
+            <ul>
+              <li>Отделение первичного приёма, информации, анализа и прогнозирования</li>
+              <li>Отделение социальной помощи на дому</li>
+              <li>Отделение социальной реабилитации и дневного пребывания</li>
+              <li>Филиал №1</li>
+              <li>Филиал №2</li>
+            </ul>
+          </article>
+
+          <article class="menu-card reveal reveal--delay-2">
+            <p class="menu-card__eyebrow">Наши услуги</p>
+            <h3>Социальное обслуживание</h3>
+            <ul>
+              <li>Условия и порядок оказания социальных услуг</li>
+              <li>Услуги няни и сиделки</li>
+              <li>Дневной присмотр</li>
+              <li>Прокат технических средств реабилитации</li>
+              <li>Услуги психолога и юриста</li>
+            </ul>
+          </article>
+
+          <article class="menu-card reveal">
+            <p class="menu-card__eyebrow">Социальная поддержка</p>
+            <h3>Важные тематические разделы</h3>
+            <ul>
+              <li>Государственная адресная социальная помощь</li>
+              <li>Льготы и материальная помощь</li>
+              <li>Профилактика домашнего насилия</li>
+              <li>Профилактика киберпреступлений</li>
+              <li>Активное долголетие</li>
+            </ul>
+          </article>
+
+          <article class="menu-card reveal reveal--delay">
+            <p class="menu-card__eyebrow">Госсоцподдержка инвалидов</p>
+            <h3>Доступная среда и сопровождение</h3>
+            <ul>
+              <li>Материалы на ясном языке</li>
+              <li>Оказание ситуационной помощи инвалидам</li>
+              <li>Уроки жестового языка</li>
+              <li>Технические средства социальной реабилитации</li>
+              <li>Доступная среда</li>
+            </ul>
+          </article>
+
+          <article class="menu-card reveal reveal--delay-2">
+            <p class="menu-card__eyebrow">Контакты и обращения</p>
+            <h3>Обратная связь</h3>
+            <ul>
+              <li>Электронные обращения граждан и юрлиц</li>
+              <li>Контактная информация</li>
+              <li>Call-центр</li>
+              <li>Вопрос-ответ</li>
+              <li>Новости и архив публикаций</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="divisions">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker">Наши подразделения</p>
+          <h2>Ключевые отделения и формы работы центра</h2>
+          <p>
+            В разделе представлены подразделения, которые принимают обращения,
+            сопровождают граждан и оказывают основные формы социальной помощи.
+          </p>
+        </div>
+
+        <div class="card-grid card-grid--divisions">
+          <article class="info-card reveal">
+            <span class="card-index">01</span>
+            <h3>Отделение первичного приёма</h3>
+            <p>
+              Первичное консультирование, приём обращений, информационное сопровождение
+              и маршрутизация граждан по направлениям помощи.
+            </p>
+          </article>
+          <article class="info-card reveal reveal--delay">
+            <span class="card-index">02</span>
+            <h3>Социальная помощь на дому</h3>
+            <p>
+              Организация повседневной поддержки, социально-бытовых услуг и сопровождения
+              граждан, нуждающихся в регулярной помощи.
+            </p>
+          </article>
+          <article class="info-card reveal reveal--delay-2">
+            <span class="card-index">03</span>
+            <h3>Реабилитация и дневное пребывание</h3>
+            <p>
+              Социальная реабилитация, абилитация, дневное пребывание граждан пожилого
+              возраста и помощь в кризисной ситуации.
+            </p>
+          </article>
+          <article class="info-card reveal">
+            <span class="card-index">04</span>
+            <h3>Филиалы и социальные приёмные</h3>
+            <p>
+              Филиалы учреждения, а также социальные приёмные и
+              стационарный социальный пункт для работы по месту проживания граждан.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="news">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker">Новости</p>
+          <h2>Актуальная повестка учреждения</h2>
+          <p>
+            В этом разделе публикуются объявления, анонсы мероприятий,
+            важные информационные сообщения и новости учреждения.
+          </p>
+        </div>
+
+        <div class="news-grid">
+          <article class="news-card reveal">
+            <div class="news-card__image-placeholder" aria-hidden="true"></div>
+            <span class="news-card__tag">17 марта 2026</span>
+            <h3>Профилактическая акция по вопросам безопасности</h3>
+            <p>
+              Информационные встречи и профилактическая работа с населением по вопросам
+              безопасности жизнедеятельности и предупреждения рисков.
+            </p>
+          </article>
+          <article class="news-card reveal reveal--delay">
+            <div class="news-card__image-placeholder news-card__image-placeholder--alt" aria-hidden="true"></div>
+            <span class="news-card__tag news-card__tag--blue">17 марта 2026</span>
+            <h3>Мастер-класс и творческие занятия для посетителей центра</h3>
+            <p>
+              Социально-культурные мероприятия, объединяющие людей старшего возраста,
+              получателей услуг и участников программ дневного пребывания.
+            </p>
+          </article>
+          <article class="news-card reveal reveal--delay-2">
+            <div class="news-card__image-placeholder news-card__image-placeholder--soft" aria-hidden="true"></div>
+            <span class="news-card__tag news-card__tag--orange">16 марта 2026</span>
+            <h3>Экскурсионные и краеведческие программы района</h3>
+            <p>
+              Образовательные и досуговые форматы, направленные на сохранение связи
+              с историей района и вовлечение граждан в жизнь сообщества.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker">Услуги</p>
+          <h2>Популярные социальные услуги и практические направления помощи</h2>
+          <p>
+            Здесь кратко представлены направления помощи, по которым граждане
+            чаще всего обращаются в центр за консультацией и сопровождением.
+          </p>
+        </div>
+
+        <div class="card-grid card-grid--services">
+          <article class="info-card reveal">
+            <span class="card-index">01</span>
+            <h3>Долговременный уход</h3>
+            <p>Межведомственная помощь гражданам, которым требуется продолжительное социальное и бытовое сопровождение.</p>
+          </article>
+          <article class="info-card reveal reveal--delay">
+            <span class="card-index">02</span>
+            <h3>Дневной присмотр</h3>
+            <p>Присмотр в дневное время для граждан, которым важно постоянное наблюдение и безопасная поддержка.</p>
+          </article>
+          <article class="info-card reveal reveal--delay-2">
+            <span class="card-index">03</span>
+            <h3>Гуманитарная помощь</h3>
+            <p>Подбор и выдача вещей первой необходимости, одежды и обуви для граждан и семей, нуждающихся в поддержке.</p>
+          </article>
+          <article class="info-card reveal">
+            <span class="card-index">04</span>
+            <h3>Прокат средств реабилитации</h3>
+            <p>Временное предоставление технических средств социальной реабилитации без взимания платы.</p>
+          </article>
+          <article class="info-card reveal reveal--delay">
+            <span class="card-index">05</span>
+            <h3>Услуги няни, сиделки и ассистента</h3>
+            <p>Поддержка семей, пожилых граждан и людей с выраженными ограничениями самообслуживания и передвижения.</p>
+          </article>
+          <article class="info-card reveal reveal--delay-2">
+            <span class="card-index">06</span>
+            <h3>Психологическая и юридическая помощь</h3>
+            <p>Консультации по жизненным ситуациям, правовым вопросам социальной защиты и безопасному маршруту обращения.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--faq" id="answers">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker">Вопрос-ответ</p>
+          <h2>Частые обращения граждан</h2>
+          <p>
+            Раздел встроен в компактный лендинг, но по смыслу повторяет быстрый вход
+            в часто задаваемые вопросы на официальном сайте.
+          </p>
+        </div>
+
+        <div class="faq-list">
+          <article class="faq-item reveal">
+            <button class="faq-question" type="button" aria-expanded="false">
+              Как узнать, какие документы нужны для обращения?
+            </button>
+            <div class="faq-answer">
+              <p>
+                Перечень зависит от вида услуги. На странице услуг и в разделе обращений
+                можно разместить памятку заявителю, образцы заявлений и актуальные требования.
+              </p>
+            </div>
+          </article>
+          <article class="faq-item reveal reveal--delay">
+            <button class="faq-question" type="button" aria-expanded="false">
+              Можно ли обратиться без личного визита?
+            </button>
+            <div class="faq-answer">
+              <p>
+                Да. Для первичного контакта доступны горячая линия, электронная почта и
+                форма электронного обращения на сайте.
+              </p>
+            </div>
+          </article>
+          <article class="faq-item reveal reveal--delay-2">
+            <button class="faq-question" type="button" aria-expanded="false">
+              Где искать новости и официальные объявления центра?
+            </button>
+            <div class="faq-answer">
+              <p>
+                В отдельном новостном разделе удобно публиковать изменения графика,
+                анонсы мероприятий, памятки и важные разъяснения для граждан.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contacts" id="contacts">
+      <div class="container contacts-layout contacts-layout--official contacts-layout--resources-only">
+        <aside class="resource-card resource-card--wide media-carousel media-carousel--resources media-carousel--resources-expanded reveal reveal--delay">
+          <p class="section-kicker">Официальные ресурсы</p>
+          <h3>Полезные государственные и правовые площадки</h3>
+
+          <div class="resource-showcase">
+            <button class="resource-showcase__arrow resource-showcase__arrow--prev" type="button" aria-hidden="true" tabindex="-1">
+              <span aria-hidden="true">‹</span>
+            </button>
+
+            <div class="media-carousel__viewport">
+              <div class="media-carousel__track">
+                <article class="media-slide media-slide--resource">
+                  <div class="resource-slide__logo resource-slide__logo--president" aria-hidden="true"></div>
+                  <h4>Официальный справочный портал</h4>
+                  <p>Справочный ресурс с общими материалами, публикациями и тематическими разделами.</p>
+                </article>
+
+                <article class="media-slide media-slide--resource">
+                  <div class="resource-slide__logo resource-slide__logo--region" aria-hidden="true"></div>
+                  <h4>Районный исполнительный комитет</h4>
+                  <p>Официальная информация территории, административные сведения и полезные сервисы для граждан.</p>
+                </article>
+
+                <article class="media-slide media-slide--resource">
+                  <div class="resource-slide__logo resource-slide__logo--committee" aria-hidden="true"></div>
+                  <h4>Комитет по труду, занятости и социальной защите</h4>
+                  <p>Профильная площадка по вопросам социальной защиты, занятости населения и отраслевого регулирования.</p>
+                </article>
+
+                <article class="media-slide media-slide--resource">
+                  <div class="resource-slide__logo resource-slide__logo--pravo" aria-hidden="true"></div>
+                  <h4>Правовой портал</h4>
+                  <p>Раздел с нормативными материалами, правовой информацией и действующими документами.</p>
+                </article>
+
+                <article class="media-slide media-slide--resource">
+                  <div class="resource-slide__logo resource-slide__logo--quality" aria-hidden="true"></div>
+                  <h4>Портал оценки качества услуг</h4>
+                  <p>Сервис обратной связи и оценки качества работы организаций, предоставляющих услуги населению.</p>
+                </article>
+              </div>
+            </div>
+
+            <button class="resource-showcase__arrow resource-showcase__arrow--next" type="button" aria-hidden="true" tabindex="-1">
+              <span aria-hidden="true">›</span>
+            </button>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <p class="section-kicker">ГУ «ТЦСОН»</p>
+        <h2>Информация об учреждении, услугах, новостях и контактах</h2>
+        <p>
+          Актуальные сведения о работе центра, социальных услугах,
+          новостях, контактной информации и официальных ресурсах.
+        </p>
+      </div>
+
+      <div>
+        <h3>Меню</h3>
+        <ul>
+          <li><a href="#about">О центре</a></li>
+          <li><a href="#divisions">Отделения</a></li>
+          <li><a href="#services">Наши услуги</a></li>
+          <li><a href="#menu">Социальная поддержка</a></li>
+          <li><a href="#news">Новости</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+          <li><a href="#menu">Госсоцподдержка инвалидов</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Контакты</h3>
+        <ul>
+          <li>г. Городской центр, ул. Центральная, д. 10</li>
+          <li>8 (00000) 0-00-02</li>
+          <li>8 (00000) 0-00-01</li>
+          <li>info@tcson.by</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
