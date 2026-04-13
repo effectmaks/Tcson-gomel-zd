@@ -1,0 +1,12 @@
+.DS_Store
+Thumbs.db
+.docker/mysql/init/010-remote-db.sql
+
+site/www/tcsonrw-gomel.by/db_connection.local.php
+site/www/tcsonrw-gomel.by/api/service/config.local.php
+
+site/www/tcsonrw-gomel.by/photos/
+site/www/tcsonrw-gomel.by/videos/
+site/www/tcsonrw-gomel.by/messenger_storage/
+
+site/www/tcsonrw-gomel.by/Архив.zip

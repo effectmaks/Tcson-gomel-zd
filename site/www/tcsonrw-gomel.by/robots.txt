@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+Disallow: /auth.php
+Disallow: /addnews.php
+Disallow: /editnews.php
+Disallow: /adduser.php
+Disallow: /listuser.php
+Disallow: /deletenews.php
+Disallow: /deletePhoto.php
+Disallow: /api/
+
+Sitemap: https://tcsonrw-gomel.by/sitemap.xml

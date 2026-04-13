@@ -1,0 +1,61 @@
+services:
+  php:
+    build:
+      context: .
+      dockerfile: ./site/Dockerfile
+    container_name: gomel-rw-site-php
+    volumes:
+      - ./site:/var/www/site
+      - ./.docker/php/db_connection.local.php:/var/www/site/www/tcsonrw-gomel.by/db_connection.local.php:ro
+    ports:
+      - "8090:80"
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: tcsonrw_gomel_site
+      DB_USER: tcsonrw_gomel_site
+      DB_PASSWORD: tcsonrw_gomel_local
+      MESSENGER_SITE_NAME: ТЦСОН Железнодорожного района г. Гомеля
+      MESSENGER_SITE_CODE: GMZD
+    depends_on:
+      db:
+        condition: service_healthy
+
+  phpmyadmin:
+    image: phpmyadmin:5-apache
+    container_name: gomel-rw-site-phpmyadmin
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: tcsonrw_gomel_root
+    ports:
+      - "8091:80"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8.0
+    container_name: gomel-rw-site-db
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: tcsonrw_gomel_root
+      MYSQL_DATABASE: tcsonrw_gomel_site
+      MYSQL_USER: tcsonrw_gomel_site
+      MYSQL_PASSWORD: tcsonrw_gomel_local
+    volumes:
+      - gomel_rw_site_db_data:/var/lib/mysql
+      - ./.docker/mysql/init:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "3308:3306"
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -p$${MYSQL_ROOT_PASSWORD} --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+volumes:
+  gomel_rw_site_db_data:

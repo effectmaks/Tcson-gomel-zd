@@ -1,0 +1,14 @@
+Options -MultiViews
+
+RewriteEngine On
+
+RewriteRule ^sitemap\.xml$ sitemap.php [L,QSA]
+RewriteRule ^news/([a-zA-Z0-9-]+)/?$ news.php?slug=$1 [L,QSA,B]
+
+# Serve extensionless URLs through the matching PHP file when it exists.
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+?)/?$ $1.php [L,QSA]
+
+DirectoryIndex index.php
