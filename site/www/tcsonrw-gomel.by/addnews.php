@@ -687,13 +687,13 @@ if ($isEditMode) {
         return card;
     }
 
-    function removePendingVideoPreview() {
+    function removePendingVideoPreview(preserveInput = false) {
         if (pendingVideo && pendingVideo.objectUrl) {
             URL.revokeObjectURL(pendingVideo.objectUrl);
         }
 
         pendingVideo = null;
-        if (videoInput) {
+        if (videoInput && !preserveInput) {
             videoInput.value = '';
         }
 
@@ -754,7 +754,8 @@ if ($isEditMode) {
             return;
         }
 
-        removePendingVideoPreview();
+        // Keep the chosen file in the real <input type="file"> so PHP receives it on submit.
+        removePendingVideoPreview(true);
 
         const objectUrl = URL.createObjectURL(file);
         pendingVideo = {
