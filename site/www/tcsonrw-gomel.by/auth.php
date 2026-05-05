@@ -72,7 +72,7 @@ $seoRobotsMeta = 'noindex,nofollow';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/normalize.css?v=<?= filemtime($_SERVER['DOCUMENT_ROOT'] . '/css/normalize.css') ?>">
     <link rel="stylesheet" href="/css/cssbootstrap.min.css?v=<?= filemtime($_SERVER['DOCUMENT_ROOT'] . '/css/cssbootstrap.min.css') ?>">
     <link rel="stylesheet" type="text/css" href="/css/slick.css?v=<?= filemtime($_SERVER['DOCUMENT_ROOT'] . '/css/slick.css') ?>" />
@@ -93,7 +93,7 @@ $seoRobotsMeta = 'noindex,nofollow';
     $seoCanonical = $seoScheme . '://' . $seoHost . $seoPath;
     $seoTitleMeta = $seoTitleMeta ?? 'ТЦСОН Железнодорожного района г. Гомеля';
     $seoDescriptionMeta = $seoDescriptionMeta ?? 'Официальный сайт ТЦСОН Железнодорожного района г. Гомеля. Новости, мероприятия, услуги и контакты.';
-    $seoOgImage = $seoOgImage ?? '/img/logo-main.png';
+    $seoOgImage = $seoOgImage ?? '/img/logo-old-mini.webp';
     $seoRobotsMeta = $seoRobotsMeta ?? 'index,follow';
     $seoOgImageUrl = preg_match('#^https?://#i', $seoOgImage)
         ? $seoOgImage
@@ -112,17 +112,19 @@ $seoRobotsMeta = 'noindex,nofollow';
 </head>
 
 <body class="auth-page">
+    <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function(m,e,t,r,i,k,a){
             m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
             m[i].l=1*new Date();
             for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
             k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106899778', 'ym');
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108807139', 'ym');
 
-        ym(106899778, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+        ym(108807139, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
     </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/106899778" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <noscript><div><img src="https://mc.yandex.ru/watch/108807139" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
     <div class="button_btneay">
         <button id="specialButton" class="header-top-buttons__impaired-button" aria-label="Версия для слабовидящих">
             <span class="header-top-buttons__impaired-icon" aria-hidden="true"></span>

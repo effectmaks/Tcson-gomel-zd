@@ -1,19 +1,19 @@
 <!-- Yandex.Metrika counter -->
-<script>
+<script type="text/javascript">
     (function(m,e,t,r,i,k,a){
         m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
         m[i].l=1*new Date();
         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106899778', 'ym');
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108807139', 'ym');
 
-    ym(106899778, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    ym(108807139, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/106899778" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+<noscript><div><img src="https://mc.yandex.ru/watch/108807139" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 <?php $pageBrandLogoSrc = isset($pageBrandLogoSrc) && is_string($pageBrandLogoSrc) && $pageBrandLogoSrc !== ''
     ? $pageBrandLogoSrc
-    : '/img/logo-tcson-gomel-zhd.webp'; ?>
+    : '/img/logo-old-mini.webp'; ?>
 <header class="header.php">
   <div class="min_size_page_h_f header-down">
     <div class="container">
@@ -36,7 +36,7 @@
             <div class="header-contact-card header-contact-card--trust">
               <div class="header-contact-card__icon header-contact-card__icon--service" aria-hidden="true"></div>
               <div class="header-contact-card__body">
-                <a class="header-contact-card__phone" href="tel:+375232349956">+375 (232) 34-99-56</a>
+                <a class="header-contact-card__phone" href="tel:+375232349956">8 (0232) 34-99-56</a>
                 <div class="header-contact-card__note">горячая линия</div>
               </div>
             </div>
@@ -44,7 +44,7 @@
             <div class="header-contact-card header-contact-card--main">
               <div class="header-contact-card__icon header-contact-card__icon--phone" aria-hidden="true"></div>
               <div class="header-contact-card__body">
-                <a class="header-contact-card__phone" href="tel:+375232210946">+375 (232) 21-09-46</a>
+                <a class="header-contact-card__phone" href="tel:+375232210946">8 (0232) 21-09-46</a>
                 <div class="header-contact-card__meta">пн-пт: 8:30 - 17:30</div>
                 <a class="header-contact-card__email" href="mailto:officer@tcsonrw-gomel.by">officer@tcsonrw-gomel.by</a>
               </div>

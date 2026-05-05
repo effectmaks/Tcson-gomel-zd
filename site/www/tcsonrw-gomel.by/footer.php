@@ -1,6 +1,6 @@
 <?php $pageBrandLogoSrc = isset($pageBrandLogoSrc) && is_string($pageBrandLogoSrc) && $pageBrandLogoSrc !== ''
     ? $pageBrandLogoSrc
-    : '/img/logo-tcson-gomel-zhd.webp'; ?>
+    : '/img/logo-old-mini.webp'; ?>
 <footer class="min_size_page_main footer">
   <div class="footer__ornament" aria-hidden="true"></div>
 
@@ -34,7 +34,7 @@
           <nav aria-label="Нижняя навигация">
             <ul class="footer-nav list-reset">
               <li class="footer-nav__item">
-                <a href="/#about-center" class="footer-nav__link">
+                <a href="/structure.php" class="footer-nav__link">
                   <span class="footer-nav__icon footer-nav__icon--about" aria-hidden="true"></span>
                   <span>О центре</span>
                   <span class="footer-nav__arrow" aria-hidden="true"></span>
@@ -76,7 +76,7 @@
                 </a>
               </li>
               <li class="footer-nav__item">
-                <a href="mailto:officer@tcsonrw-gomel.by" class="footer-nav__link">
+                <a href="/contacts.php" class="footer-nav__link">
                   <span class="footer-nav__icon footer-nav__icon--contacts" aria-hidden="true"></span>
                   <span>Контакты</span>
                   <span class="footer-nav__arrow" aria-hidden="true"></span>
@@ -108,8 +108,8 @@
               <span class="footer-contact-item__icon footer-contact-item__icon--phone" aria-hidden="true"></span>
               <div class="footer-contact-item__body">
                 <strong>Телефон:</strong>
-                <a href="tel:+375232210946">+375 (232) 21-09-46</a>
-                <a href="tel:+375232349899">+375 (232) 34-98-99</a>
+                <a href="tel:+375232210946">8 (0232) 21-09-46</a>
+                <a href="tel:+375232349899">8 (0232) 34-98-99</a>
                 <span>пн-пт: 8:30 - 17:30</span>
               </div>
             </div>
@@ -165,7 +165,7 @@
           <div class="footer-meta-card__body">
             <h4>График приёма</h4>
             <p>Административные процедуры: пн, ср, чт, пт с 08:00 до 13:00.</p>
-            <p>Вторник: с 14:00 до 20:00. Приемная: +375 (232) 21-09-46.</p>
+            <p>Вторник: с 14:00 до 20:00. Приемная: 8 (0232) 21-09-46.</p>
           </div>
         </div>
       </div>

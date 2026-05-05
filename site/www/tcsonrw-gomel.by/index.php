@@ -139,7 +139,7 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
-    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/cssbootstrap.min.css?v=<?= filemtime($_SERVER['DOCUMENT_ROOT'] . '/css/cssbootstrap.min.css') ?>">
     <link rel="stylesheet" type="text/css" href="/css/slick.css?v=<?= filemtime($_SERVER['DOCUMENT_ROOT'] . '/css/slick.css') ?>">
     <link rel="stylesheet" href="/css/smartphoto.min.css?v=<?= filemtime($_SERVER['DOCUMENT_ROOT'] . '/css/smartphoto.min.css') ?>">
@@ -158,7 +158,7 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
     $seoCanonical = $seoScheme . '://' . $seoHost . $seoPath;
     $seoTitleMeta = $seoTitleMeta ?? 'ТЦСОН Железнодорожного района г. Гомеля';
     $seoDescriptionMeta = $seoDescriptionMeta ?? 'Официальный сайт ТЦСОН Железнодорожного района г. Гомеля. Новости, мероприятия и административная часть.';
-    $seoOgImage = $seoOgImage ?? '/img/logo-main.png';
+    $seoOgImage = $seoOgImage ?? '/img/logo-old-mini.webp';
     $seoRobotsMeta = $seoRobotsMeta ?? 'index,follow';
     $seoOgImageUrl = preg_match('#^https?://#i', $seoOgImage)
         ? $seoOgImage
@@ -1738,7 +1738,7 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
                                 </div>
                                 <div>
                                 <p class="homepage-service-panel__contact-text">В целях оказания психологической помощи и поддержки работает телефон «Горячая линия»</p>
-                                <a class="homepage-service-panel__contact-phone" href="tel:+375232349956">+375 (232) 34-99-56</a>
+                                <a class="homepage-service-panel__contact-phone" href="tel:+375232349956">8 (0232) 34-99-56</a>
                             </div>
                         </div>
 
@@ -1748,7 +1748,7 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
                             </div>
                             <div>
                                 <p class="homepage-service-panel__contact-text">В целях оказания психологической помощи и поддержки работает телефон «Доверие»</p>
-                                <a class="homepage-service-panel__contact-phone" href="tel:+375232349792">+375 (232) 34-97-92</a>
+                                <a class="homepage-service-panel__contact-phone" href="tel:+375232349792">8 (0232) 34-97-92</a>
                             </div>
                         </div>
 
@@ -1758,7 +1758,7 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
                             </div>
                             <div>
                                 <p class="homepage-service-panel__contact-text">Консультации юрисконсульта по правовым вопросам можно получить по телефону</p>
-                                <a class="homepage-service-panel__contact-phone" href="tel:+375232256994">+375 (232) 25-69-94</a>
+                                <a class="homepage-service-panel__contact-phone" href="tel:+375232256994">8 (0232) 25-69-94</a>
                             </div>
                         </div>
                     </div>

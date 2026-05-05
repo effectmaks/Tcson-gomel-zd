@@ -483,7 +483,7 @@ $seoRobotsMeta = 'noindex,nofollow';
     $seoCanonical = $seoScheme . '://' . $seoHost . $seoPath;
     $seoTitleMeta = $seoTitleMeta ?? 'ТЦСОН Железнодорожного района г. Гомеля';
     $seoDescriptionMeta = $seoDescriptionMeta ?? 'Официальный сайт ТЦСОН Железнодорожного района г. Гомеля. Новости, мероприятия, услуги и контакты.';
-    $seoOgImage = $seoOgImage ?? '/img/logo-main.png';
+    $seoOgImage = $seoOgImage ?? '/img/logo-old-mini.webp';
     $seoRobotsMeta = $seoRobotsMeta ?? 'index,follow';
     $seoOgImageUrl = preg_match('#^https?://#i', $seoOgImage)
         ? $seoOgImage

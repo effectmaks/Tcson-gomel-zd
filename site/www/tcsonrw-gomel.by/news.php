@@ -165,7 +165,7 @@ if ($seoDescriptionMeta === '') {
 } elseif (mb_strlen($seoDescriptionMeta, 'UTF-8') > 160) {
     $seoDescriptionMeta = mb_substr($seoDescriptionMeta, 0, 157, 'UTF-8') . '...';
 }
-$seoOgImage = '/img/logo-main.png';
+$seoOgImage = '/img/logo-old-mini.webp';
 if (!empty($photos)) {
     $firstPhotoFilename = sanitizeStoredFilename($photos[0]['filename'] ?? '');
     if ($firstPhotoFilename !== '') {
@@ -200,7 +200,7 @@ $nextItem = fetchNewsDetailAdjacentItem($conn, $type, $date, $newsId, 'next');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/cssbootstrap.min.css?v=<?= filemtime($_SERVER['DOCUMENT_ROOT'] . '/css/cssbootstrap.min.css') ?>">
     <link rel="stylesheet" type="text/css" href="/css/slick.css?v=<?= filemtime($_SERVER['DOCUMENT_ROOT'] . '/css/slick.css') ?>">
     <link rel="stylesheet" href="/css/smartphoto.min.css?v=<?= filemtime($_SERVER['DOCUMENT_ROOT'] . '/css/smartphoto.min.css') ?>">
@@ -217,7 +217,7 @@ $nextItem = fetchNewsDetailAdjacentItem($conn, $type, $date, $newsId, 'next');
     $seoCanonical = $seoScheme . '://' . $seoHost . $canonicalNewsPath;
     $seoTitleMeta = $seoTitleMeta ?? 'ТЦСОН Железнодорожного района г. Гомеля';
     $seoDescriptionMeta = $seoDescriptionMeta ?? 'Официальный сайт ТЦСОН Железнодорожного района г. Гомеля. Новости, мероприятия, услуги и контакты.';
-    $seoOgImage = $seoOgImage ?? '/img/logo-main.png';
+    $seoOgImage = $seoOgImage ?? '/img/logo-old-mini.webp';
     $seoRobotsMeta = $seoRobotsMeta ?? 'index,follow';
     $seoOgImageUrl = preg_match('#^https?://#i', $seoOgImage)
         ? $seoOgImage

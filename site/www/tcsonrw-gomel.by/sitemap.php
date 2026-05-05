@@ -52,6 +52,9 @@ $newsArchiveLastmod = fetchLatestNewsDate($conn, 'новость');
 $eventsArchiveLastmod = fetchLatestNewsDate($conn, 'мероприятие');
 $staticEntries = array(
     array('path' => '/', 'lastmod' => $siteRootLastmod),
+    array('path' => '/contacts.php', 'lastmod' => date('Y-m-d', filemtime(__DIR__ . '/contacts.php'))),
+    array('path' => '/electronic-appeals.php', 'lastmod' => date('Y-m-d', filemtime(__DIR__ . '/electronic-appeals.php'))),
+    array('path' => '/structure.php', 'lastmod' => date('Y-m-d', filemtime(__DIR__ . '/structure.php'))),
     array('path' => '/listnews.php', 'lastmod' => $newsArchiveLastmod),
     array('path' => '/listevents.php', 'lastmod' => $eventsArchiveLastmod),
 );

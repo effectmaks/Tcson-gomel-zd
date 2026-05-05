@@ -108,7 +108,7 @@ function buildEventsArchivePageUrl($basePath, $pageNumber)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
-    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/cssbootstrap.min.css?v=<?= filemtime($_SERVER['DOCUMENT_ROOT'] . '/css/cssbootstrap.min.css') ?>">
     <link rel="stylesheet" href="/css/smartphoto.min.css?v=<?= filemtime($_SERVER['DOCUMENT_ROOT'] . '/css/smartphoto.min.css') ?>">
     <link rel="stylesheet" href="/css/style.css?v=<?= filemtime($_SERVER['DOCUMENT_ROOT'] . '/css/style.css') ?>">
@@ -124,7 +124,7 @@ function buildEventsArchivePageUrl($basePath, $pageNumber)
     $seoRequestUri = $_SERVER['REQUEST_URI'] ?? $archiveCurrentPath;
     $seoPath = strtok($seoRequestUri, '?');
     $seoCanonical = $seoScheme . '://' . $seoHost . $seoPath;
-    $seoOgImage = '/img/logo-main.png';
+    $seoOgImage = '/img/logo-old-mini.webp';
     $seoRobotsMeta = 'index,follow';
     $seoOgImageUrl = $seoScheme . '://' . $seoHost . $seoOgImage;
     ?>
