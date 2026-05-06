@@ -49,6 +49,13 @@ $contactsLeadershipRows = array(
         'room' => 'каб. № 4',
     ),
     array(
+        'role' => 'Заведующий отделением опеки и попечительства',
+        'name' => 'Коржова Карина Валерьевна',
+        'phone' => '8 (0232) 55-00-36',
+        'phone_href' => '+375232550036',
+        'room' => '',
+    ),
+    array(
         'role' => 'Заведующий отделением социальной помощи на дому',
         'name' => 'Светюха Наталья Михайловна',
         'phone' => '8 (0232) 34-98-97',
@@ -71,7 +78,7 @@ $contactsLeadershipRows = array(
     ),
     array(
         'role' => 'Заведующий отделением социальной реабилитации, абилитации инвалидов',
-        'name' => 'Семеняко Наталья Григорьевна',
+        'name' => 'Кулаковская Алина Егоровна',
         'phone' => '8 (0232) 34-99-76',
         'phone_href' => '+375232349976',
         'room' => 'каб. № 9',
@@ -609,7 +616,9 @@ $seoDescriptionMeta = 'Адрес, телефоны, руководство уч
                         <p class="contacts-leadership-card__name"><?php echo e($row['name']); ?></p>
                         <div class="contacts-leadership-card__meta">
                             <a href="tel:<?php echo e($row['phone_href']); ?>">тел. <?php echo e($row['phone']); ?></a>
-                            <span><?php echo e($row['room']); ?></span>
+                            <?php if (!empty($row['room'])): ?>
+                                <span><?php echo e($row['room']); ?></span>
+                            <?php endif; ?>
                         </div>
                     </article>
                     <?php endforeach; ?>

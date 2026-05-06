@@ -80,7 +80,7 @@ $homepageOfficialSiteCards = array(
     array(
         'title' => 'Президент Республики Беларусь',
         'href' => 'https://president.gov.by/ru',
-        'image' => '/img/official-president-belarus.png',
+        'image' => '/img/Flag_of_Belarus.png',
         'image_alt' => 'Президент Республики Беларусь.',
     ),
     array(

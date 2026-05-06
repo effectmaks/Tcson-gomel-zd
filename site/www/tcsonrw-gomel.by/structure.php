@@ -12,38 +12,26 @@ $structurePeople = array(
     'director' => array(
         'role' => 'Директор',
         'name' => 'Забавчик Наталья Александровна',
-        'phone' => '27-72-53',
-        'room' => 'каб. № 11',
     ),
     'deputy' => array(
         'role' => 'Заместитель директора',
         'name' => 'Снежкова Екатерина Петровна',
-        'phone' => '29-45-68',
-        'room' => '1 этаж',
     ),
     'accountant' => array(
         'role' => 'Главный бухгалтер',
         'name' => 'Смагур Ольга Анатольевна',
-        'phone' => '23-06-73',
-        'room' => 'каб. № 1',
     ),
     'hr' => array(
         'role' => 'Специалист по кадрам',
         'name' => 'Лысюк Илона Григорьевна',
-        'phone' => '20-97-75',
-        'room' => 'каб. № 10',
     ),
     'lawyer' => array(
         'role' => 'Юрисконсульт',
         'name' => 'Анашкина Татьяна Сергеевна',
-        'phone' => '25-69-94',
-        'room' => 'каб. № 7',
     ),
     'safety' => array(
         'role' => 'Инженер по охране труда',
         'name' => 'Солдатенко Людмила Григорьевна',
-        'phone' => '22-32-28',
-        'room' => 'каб. № 9',
     ),
 );
 
@@ -51,43 +39,36 @@ $structureDepartments = array(
     array(
         'role' => 'Отделение первичного приема, информации, анализа и прогнозирования',
         'head' => 'Волчкова Виктория Станиславовна',
-        'phone' => '34-98-99',
-        'room' => 'каб. № 3',
         'icon' => 'info',
     ),
     array(
         'role' => 'Отделение социальной поддержки населения',
         'head' => 'Коржова Елена Викторовна',
-        'phone' => '34-97-95',
-        'room' => 'каб. № 4',
         'icon' => 'support',
+    ),
+    array(
+        'role' => 'Отделение опеки и попечительства',
+        'head' => 'Коржова Карина Валерьевна',
+        'icon' => 'guardianship',
     ),
     array(
         'role' => 'Отделение социальной помощи на дому',
         'head' => 'Светюха Наталья Михайловна',
-        'phone' => '34-98-97',
-        'room' => 'каб. № 6',
         'icon' => 'home',
     ),
     array(
         'role' => 'Отделение комплексной поддержки в кризисной ситуации',
         'head' => 'Дайнеко Ирина Сергеевна',
-        'phone' => '34-97-92',
-        'room' => 'каб. № 8',
         'icon' => 'crisis',
     ),
     array(
         'role' => 'Отделение дневного пребывания для граждан пожилого возраста',
         'head' => 'Усова Лилия Евгеньевна',
-        'phone' => '26-11-94',
-        'room' => 'каб. № 1, ул. Новополесская, д. 40',
         'icon' => 'elderly',
     ),
     array(
         'role' => 'Отделение социальной реабилитации, абилитации инвалидов',
-        'head' => 'Семеняко Наталья Григорьевна',
-        'phone' => '34-99-76',
-        'room' => 'каб. № 9',
+        'head' => 'Кулаковская Алина Егоровна',
         'icon' => 'rehab',
     ),
 );
@@ -244,22 +225,47 @@ $seoDescriptionMeta = 'Структура и руководство ТЦСОН �
         }
 
         .structure-org {
+            --structure-line-color: #e43620;
+            --structure-line-size: 3px;
+            --structure-line-gap: 34px;
             position: relative;
             overflow: hidden;
             margin-bottom: 34px;
-            padding: 26px;
+            padding: 30px 26px 26px;
             border-radius: 22px;
             background: rgba(255, 255, 255, 0.78);
             box-shadow: 0 18px 38px rgba(48, 56, 52, 0.08);
         }
 
+        .structure-org__chart {
+            position: relative;
+            width: 100%;
+        }
+
         .structure-org__top {
+            position: relative;
+            z-index: 2;
             display: flex;
             justify-content: center;
-            margin-bottom: 24px;
+            margin-bottom: var(--structure-line-gap);
+        }
+
+        .structure-org__top::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: calc(-1 * var(--structure-line-gap));
+            width: var(--structure-line-size);
+            height: var(--structure-line-gap);
+            border-radius: 999px;
+            background: var(--structure-line-color);
+            transform: translateX(-50%);
+            z-index: 0;
         }
 
         .structure-card {
+            position: relative;
+            z-index: 2;
             display: flex;
             align-items: flex-start;
             gap: 14px;
@@ -268,7 +274,7 @@ $seoDescriptionMeta = 'Структура и руководство ТЦСОН �
             padding: 16px 18px;
             border: 1px solid rgba(213, 51, 49, 0.72);
             border-radius: 10px;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 236, 236, 0.96));
+            background: linear-gradient(180deg, #fff, #fff0f0);
             box-shadow: 0 10px 24px rgba(213, 51, 49, 0.11);
         }
 
@@ -279,7 +285,7 @@ $seoDescriptionMeta = 'Структура и руководство ТЦСОН �
 
         .structure-card--department {
             border-color: rgba(6, 120, 88, 0.72);
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(224, 248, 235, 0.96));
+            background: linear-gradient(180deg, #fff, #e1faec);
             box-shadow: 0 10px 24px rgba(6, 120, 88, 0.1);
         }
 
@@ -302,6 +308,11 @@ $seoDescriptionMeta = 'Структура и руководство ТЦСОН �
         }
 
         .structure-card__icon--support {
+            -webkit-mask: url("/img/socialnaya podderzhka.svg") no-repeat center / contain;
+            mask: url("/img/socialnaya podderzhka.svg") no-repeat center / contain;
+        }
+
+        .structure-card__icon--guardianship {
             -webkit-mask: url("/img/socialnaya podderzhka.svg") no-repeat center / contain;
             mask: url("/img/socialnaya podderzhka.svg") no-repeat center / contain;
         }
@@ -337,6 +348,7 @@ $seoDescriptionMeta = 'Структура и руководство ТЦСОН �
             font-weight: 800;
             line-height: 1.25;
             text-transform: uppercase;
+            overflow-wrap: anywhere;
         }
 
         .structure-card--department .structure-card__role {
@@ -350,26 +362,47 @@ $seoDescriptionMeta = 'Структура и руководство ТЦСОН �
             font-size: 15px;
             font-weight: 700;
             line-height: 1.35;
-        }
-
-        .structure-card__meta {
-            display: block;
-            margin-top: 4px;
-            color: #5f6b63;
-            font-size: 14px;
-            line-height: 1.35;
+            overflow-wrap: anywhere;
         }
 
         .structure-org__branches {
+            position: relative;
+            z-index: 1;
             display: grid;
-            grid-template-columns: minmax(190px, 0.8fr) minmax(280px, 1fr) minmax(190px, 0.8fr);
-            gap: 22px;
+            grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.12fr) minmax(0, 0.82fr);
+            gap: clamp(10px, 2vw, 22px);
             align-items: start;
         }
 
+        .structure-org__branches::before {
+            content: "";
+            position: absolute;
+            top: calc(var(--structure-line-gap) / -2);
+            left: 12%;
+            right: 12%;
+            height: var(--structure-line-size);
+            border-radius: 999px;
+            background: var(--structure-line-color);
+            z-index: 0;
+        }
+
         .structure-org__column {
+            position: relative;
             display: grid;
             gap: 14px;
+        }
+
+        .structure-org__column::before {
+            content: "";
+            position: absolute;
+            top: calc(var(--structure-line-gap) / -2);
+            bottom: 0;
+            left: 50%;
+            width: var(--structure-line-size);
+            border-radius: 999px;
+            background: var(--structure-line-color);
+            transform: translateX(-50%);
+            z-index: 0;
         }
 
         .structure-org__column--departments {
@@ -510,10 +543,6 @@ $seoDescriptionMeta = 'Структура и руководство ТЦСОН �
                 grid-template-columns: 260px minmax(0, 1fr);
                 gap: 24px;
             }
-
-            .structure-org__branches {
-                grid-template-columns: 1fr;
-            }
         }
 
         @media (max-width: 860px) {
@@ -550,11 +579,52 @@ $seoDescriptionMeta = 'Структура и руководство ТЦСОН �
             }
 
             .structure-org {
-                padding: 16px;
+                --structure-line-size: 2px;
+                --structure-line-gap: 24px;
+                padding: 14px 10px 12px;
+            }
+
+            .structure-org__chart {
+                width: 760px;
+                max-width: none;
+                zoom: 0.43;
+            }
+
+            .structure-org__branches {
+                gap: 6px;
+            }
+
+            .structure-org__column {
+                gap: 8px;
+            }
+
+            .structure-org__column--departments {
+                gap: 7px;
             }
 
             .structure-card {
-                padding: 14px;
+                gap: 6px;
+                min-height: 54px;
+                padding: 8px 7px;
+                border-radius: 8px;
+            }
+
+            .structure-card__icon {
+                width: 17px;
+                height: 17px;
+                flex-basis: 17px;
+                margin-top: 1px;
+            }
+
+            .structure-card__role {
+                margin-bottom: 4px;
+                font-size: 10px;
+                line-height: 1.18;
+            }
+
+            .structure-card__name {
+                font-size: 11px;
+                line-height: 1.2;
             }
 
             .structure-doc-card {
@@ -564,6 +634,18 @@ $seoDescriptionMeta = 'Структура и руководство ТЦСОН �
 
             .structure-doc-card__button {
                 grid-column: 1 / -1;
+            }
+        }
+
+        @media (min-width: 400px) and (max-width: 620px) {
+            .structure-org__chart {
+                zoom: 0.47;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .structure-org__chart {
+                zoom: 0.39;
             }
         }
     </style>
@@ -595,62 +677,59 @@ $seoDescriptionMeta = 'Структура и руководство ТЦСОН �
             </section>
 
             <section class="structure-org" aria-label="Организационная структура учреждения">
-                <div class="structure-org__top">
-                    <article class="structure-card structure-card--director">
-                        <span class="structure-card__icon structure-card__icon--person" aria-hidden="true"></span>
-                        <div class="structure-card__body">
-                            <h2 class="structure-card__role"><?php echo e($structurePeople['director']['role']); ?></h2>
-                            <span class="structure-card__name"><?php echo e($structurePeople['director']['name']); ?></span>
-                            <span class="structure-card__meta">тел. <?php echo e($structurePeople['director']['phone']); ?>, <?php echo e($structurePeople['director']['room']); ?></span>
+                <div class="structure-org__chart">
+                    <div class="structure-org__top">
+                        <article class="structure-card structure-card--director">
+                            <span class="structure-card__icon structure-card__icon--person" aria-hidden="true"></span>
+                            <div class="structure-card__body">
+                                <h2 class="structure-card__role"><?php echo e($structurePeople['director']['role']); ?></h2>
+                                <span class="structure-card__name"><?php echo e($structurePeople['director']['name']); ?></span>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="structure-org__branches">
+                        <div class="structure-org__column structure-org__column--left">
+                            <article class="structure-card">
+                                <span class="structure-card__icon structure-card__icon--person" aria-hidden="true"></span>
+                                <div class="structure-card__body">
+                                    <h3 class="structure-card__role"><?php echo e($structurePeople['accountant']['role']); ?></h3>
+                                    <span class="structure-card__name"><?php echo e($structurePeople['accountant']['name']); ?></span>
+                                </div>
+                            </article>
                         </div>
-                    </article>
-                </div>
 
-                <div class="structure-org__branches">
-                    <div class="structure-org__column">
-                        <article class="structure-card">
-                            <span class="structure-card__icon structure-card__icon--person" aria-hidden="true"></span>
-                            <div class="structure-card__body">
-                                <h3 class="structure-card__role"><?php echo e($structurePeople['accountant']['role']); ?></h3>
-                                <span class="structure-card__name"><?php echo e($structurePeople['accountant']['name']); ?></span>
-                                <span class="structure-card__meta">тел. <?php echo e($structurePeople['accountant']['phone']); ?>, <?php echo e($structurePeople['accountant']['room']); ?></span>
-                            </div>
-                        </article>
-                    </div>
+                        <div class="structure-org__column structure-org__column--departments">
+                            <article class="structure-card">
+                                <span class="structure-card__icon structure-card__icon--person" aria-hidden="true"></span>
+                                <div class="structure-card__body">
+                                    <h3 class="structure-card__role"><?php echo e($structurePeople['deputy']['role']); ?></h3>
+                                    <span class="structure-card__name"><?php echo e($structurePeople['deputy']['name']); ?></span>
+                                </div>
+                            </article>
 
-                    <div class="structure-org__column structure-org__column--departments">
-                        <article class="structure-card">
-                            <span class="structure-card__icon structure-card__icon--person" aria-hidden="true"></span>
-                            <div class="structure-card__body">
-                                <h3 class="structure-card__role"><?php echo e($structurePeople['deputy']['role']); ?></h3>
-                                <span class="structure-card__name"><?php echo e($structurePeople['deputy']['name']); ?></span>
-                                <span class="structure-card__meta">тел. <?php echo e($structurePeople['deputy']['phone']); ?>, <?php echo e($structurePeople['deputy']['room']); ?></span>
-                            </div>
-                        </article>
+                            <?php foreach ($structureDepartments as $department): ?>
+                            <article class="structure-card structure-card--department">
+                                <span class="structure-card__icon structure-card__icon--<?php echo e($department['icon']); ?>" aria-hidden="true"></span>
+                                <div class="structure-card__body">
+                                    <h3 class="structure-card__role"><?php echo e($department['role']); ?></h3>
+                                    <span class="structure-card__name"><?php echo e($department['head']); ?></span>
+                                </div>
+                            </article>
+                            <?php endforeach; ?>
+                        </div>
 
-                        <?php foreach ($structureDepartments as $department): ?>
-                        <article class="structure-card structure-card--department">
-                            <span class="structure-card__icon structure-card__icon--<?php echo e($department['icon']); ?>" aria-hidden="true"></span>
-                            <div class="structure-card__body">
-                                <h3 class="structure-card__role"><?php echo e($department['role']); ?></h3>
-                                <span class="structure-card__name"><?php echo e($department['head']); ?></span>
-                                <span class="structure-card__meta">тел. <?php echo e($department['phone']); ?>, <?php echo e($department['room']); ?></span>
-                            </div>
-                        </article>
-                        <?php endforeach; ?>
-                    </div>
-
-                    <div class="structure-org__column">
-                        <?php foreach (array('hr', 'lawyer', 'safety') as $personKey): ?>
-                        <article class="structure-card">
-                            <span class="structure-card__icon structure-card__icon--person" aria-hidden="true"></span>
-                            <div class="structure-card__body">
-                                <h3 class="structure-card__role"><?php echo e($structurePeople[$personKey]['role']); ?></h3>
-                                <span class="structure-card__name"><?php echo e($structurePeople[$personKey]['name']); ?></span>
-                                <span class="structure-card__meta">тел. <?php echo e($structurePeople[$personKey]['phone']); ?>, <?php echo e($structurePeople[$personKey]['room']); ?></span>
-                            </div>
-                        </article>
-                        <?php endforeach; ?>
+                        <div class="structure-org__column structure-org__column--right">
+                            <?php foreach (array('hr', 'lawyer', 'safety') as $personKey): ?>
+                            <article class="structure-card">
+                                <span class="structure-card__icon structure-card__icon--person" aria-hidden="true"></span>
+                                <div class="structure-card__body">
+                                    <h3 class="structure-card__role"><?php echo e($structurePeople[$personKey]['role']); ?></h3>
+                                    <span class="structure-card__name"><?php echo e($structurePeople[$personKey]['name']); ?></span>
+                                </div>
+                            </article>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
                 </div>
             </section>

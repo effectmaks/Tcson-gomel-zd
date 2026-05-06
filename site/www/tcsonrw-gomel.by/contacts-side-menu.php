@@ -11,6 +11,11 @@ $contactsMenuItems = array(
         'href' => '/electronic-appeals.php',
         'label' => 'Электронные обращения граждан и юрлиц',
     ),
+    array(
+        'key' => 'direct-phone-line',
+        'href' => '/direct-phone-line.php',
+        'label' => 'Прямая телефонная линия',
+    ),
 );
 ?>
 <aside class="section-side-menu" aria-label="Меню раздела Контакты">
