@@ -55,7 +55,7 @@
                 </a>
               </li>
               <li class="footer-nav__item">
-                <a href="/#support" class="footer-nav__link">
+                <a href="/anti-corruption.php" class="footer-nav__link">
                   <span class="footer-nav__icon footer-nav__icon--support" aria-hidden="true"></span>
                   <span>Социальная поддержка</span>
                   <span class="footer-nav__arrow" aria-hidden="true"></span>

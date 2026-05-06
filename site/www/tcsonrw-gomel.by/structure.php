@@ -4,7 +4,7 @@ require_once __DIR__ . '/lib/security.php';
 $structurePageTitle = 'Структура учреждения';
 $structureSiteName = 'Территориальный центр социального обслуживания населения Железнодорожного района г. Гомеля';
 $structureDocTitle = 'Политика государственного учреждения в отношении обработки персональных данных';
-$structureDocHref = '/documents/gomel-personal-data-policy.docx';
+$structureDocHref = '/documents/gomel-personal-data-policy-2026.docx';
 $structureDocPath = __DIR__ . $structureDocHref;
 $structureDocSize = file_exists($structureDocPath) ? (int) ceil(filesize($structureDocPath) / 1024) . ' КБ' : '';
 
