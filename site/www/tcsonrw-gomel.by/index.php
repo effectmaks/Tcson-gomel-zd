@@ -1737,7 +1737,7 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
                                     <span class="homepage-service-panel__contact-icon-glyph" aria-hidden="true"></span>
                                 </div>
                                 <div>
-                                <p class="homepage-service-panel__contact-text">В целях оказания психологической помощи и поддержки работает телефон «Горячая линия»</p>
+                                <p class="homepage-service-panel__contact-text">По вопросам справочно-консультационного характера работает телефон горячей линии</p>
                                 <a class="homepage-service-panel__contact-phone" href="tel:+375232349956">8 (0232) 34-99-56</a>
                             </div>
                         </div>
