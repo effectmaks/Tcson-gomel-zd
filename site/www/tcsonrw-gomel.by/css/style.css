@@ -1496,7 +1496,7 @@ html.special .admin-page {
   background: transparent;
 }
 
-.footer-social__link--instagram {
+.footer-social__link--ok {
   background: transparent;
 }
 
@@ -1518,10 +1518,10 @@ html.special .admin-page {
   mask-image: url("../img/icons8-телеграм.svg");
 }
 
-.footer-social__icon--instagram {
-  background: linear-gradient(135deg, #feda75 0%, #fa7e1e 22%, #d62976 48%, #962fbf 76%, #4f5bd5 100%);
-  -webkit-mask-image: url("../img/icons8-instagram-2.svg");
-  mask-image: url("../img/icons8-instagram-2.svg");
+.footer-social__icon--ok {
+  background-color: #ee8208;
+  -webkit-mask-image: url("../img/icons8-одноклассники.svg");
+  mask-image: url("../img/icons8-одноклассники.svg");
 }
 
 .footer-feedback__text {

@@ -130,8 +130,8 @@
             <a href="https://t.me/tcsonrw_gomel" class="footer-social__link footer-social__link--telegram" aria-label="Telegram" target="_blank" rel="noopener noreferrer">
               <span class="footer-social__icon footer-social__icon--telegram" aria-hidden="true"></span>
             </a>
-            <a href="https://www.instagram.com/" class="footer-social__link footer-social__link--instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-              <span class="footer-social__icon footer-social__icon--instagram" aria-hidden="true"></span>
+            <a href="https://ok.ru/group/70000006257887" class="footer-social__link footer-social__link--ok" aria-label="Одноклассники" target="_blank" rel="noopener noreferrer">
+              <span class="footer-social__icon footer-social__icon--ok" aria-hidden="true"></span>
             </a>
           </div>
 
