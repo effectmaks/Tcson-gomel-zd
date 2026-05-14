@@ -1519,9 +1519,9 @@ html.special .admin-page {
 }
 
 .footer-social__icon--ok {
-  background-color: #ee8208;
-  -webkit-mask-image: url("../img/icons8-одноклассники.svg");
-  mask-image: url("../img/icons8-одноклассники.svg");
+  background: url("../img/icons8-одноклассники.svg") no-repeat center / contain;
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 
 .footer-feedback__text {
