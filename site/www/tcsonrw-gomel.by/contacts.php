@@ -1,5 +1,8 @@
 <?php
 require_once __DIR__ . '/lib/security.php';
+require_once __DIR__ . '/lib/auth.php';
+require_once __DIR__ . '/lib/public_page_visibility.php';
+include __DIR__ . '/db_connection.php';
 
 $contactsPageTitle = 'Контактная информация';
 $contactsSiteName = 'ТЦСОН Железнодорожного района г. Гомеля';
@@ -37,7 +40,7 @@ $contactsLeadershipRows = array(
     array(
         'role' => 'Заведующий отделением первичного приема, информации, анализа и прогнозирования',
         'name' => 'Волчкова Виктория Станиславовна',
-        'phone' => '8 (0232) 34-98-99',
+        'phone' => '8 (0232) 34-98-99, 34-99-56',
         'phone_href' => '+375232349899',
         'room' => 'каб. № 3',
     ),
@@ -53,14 +56,14 @@ $contactsLeadershipRows = array(
         'name' => 'Коржова Карина Валерьевна',
         'phone' => '8 (0232) 55-00-36',
         'phone_href' => '+375232550036',
-        'room' => '',
+        'room' => 'ул. Юбилейная, д. 8, к. 2, каб. № 10',
     ),
     array(
         'role' => 'Заведующий отделением социальной помощи на дому',
         'name' => 'Светюха Наталья Михайловна',
-        'phone' => '8 (0232) 34-98-97',
-        'phone_href' => '+375232349897',
-        'room' => 'каб. № 6',
+        'phone' => '8 (0232) 34-98-96, 34-98-97',
+        'phone_href' => '+375232349896',
+        'room' => 'каб. № 5',
     ),
     array(
         'role' => 'Заведующий отделением комплексной поддержки в кризисной ситуации',
@@ -72,7 +75,7 @@ $contactsLeadershipRows = array(
     array(
         'role' => 'Заведующий отделением дневного пребывания для граждан пожилого возраста',
         'name' => 'Усова Лилия Евгеньевна',
-        'phone' => '8 (0232) 35-75-63',
+        'phone' => '8 (0232) 35-75-63, 35-75-58',
         'phone_href' => '+375232357563',
         'room' => 'ул. Юбилейная, д. 8/2',
     ),
@@ -108,6 +111,8 @@ $contactsLeadershipRows = array(
 
 $seoTitleMeta = 'Контактная информация - ТЦСОН Железнодорожного района г. Гомеля';
 $seoDescriptionMeta = 'Адрес, телефоны, руководство учреждения и карта проезда ТЦСОН Железнодорожного района г. Гомеля.';
+
+bootstrapPublicPageVisibility($conn, '/contacts.php', $contactsPageTitle);
 ?>
 <!DOCTYPE html>
 <html lang="ru">

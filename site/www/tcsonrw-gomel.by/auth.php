@@ -5,6 +5,7 @@ require_once __DIR__ . '/lib/security.php';
 require_once __DIR__ . '/lib/auth.php';
 include __DIR__ . '/db_connection.php';
 
+$returnPath = normalizeInternalRedirectPath($_GET['return'] ?? ($_POST['return'] ?? ''), '/auth.php');
 $loggedIn = isLoggedIn();
 $login = $loggedIn ? $_SESSION['login'] : '';
 $welcomeName = $login;
@@ -42,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $error = 'Учетная запись заблокирована';
                 } else {
                     loginUserWithPermissions($loginInput, $user);
-                    redirectTo('/auth.php');
+                    redirectTo($returnPath);
                 }
             } else {
                 $error = 'Неверное имя пользователя или пароль';
@@ -171,6 +172,7 @@ $seoRobotsMeta = 'noindex,nofollow';
             <?php endif; ?>
             <form method="POST" action="" class="auth-form">
                 <input type="hidden" name="csrf_token" value="<?php echo e($csrfToken); ?>">
+                <input type="hidden" name="return" value="<?php echo e($returnPath); ?>">
                 <div class="auth-field">
                     <label class="auth-label" for="login">Имя пользователя</label>
                     <input class="auth-input" type="text" id="login" name="login" autocomplete="username" required>

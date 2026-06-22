@@ -450,9 +450,8 @@ def slugify(value: str) -> str:
 def iter_posts(channel: str, since: date, until: date | None, tz_name: str) -> Iterable[Post]:
     before: int | None = None
     collected: list[Post] = []
-    reached_older = False
 
-    while not reached_older:
+    while True:
         url = BASE_WEB_URL.format(channel=channel)
         if before is not None:
             url = f"{url}?before={before}"
@@ -461,14 +460,19 @@ def iter_posts(channel: str, since: date, until: date | None, tz_name: str) -> I
         if not page_posts:
             break
 
+        page_has_posts_on_or_after_since = False
         for post in page_posts:
             post_day = date.fromisoformat(post.local_date)
+            if post_day >= since:
+                page_has_posts_on_or_after_since = True
             if until and post_day > until:
                 continue
             if post_day < since:
-                reached_older = True
-                break
+                continue
             collected.append(post)
+
+        if not page_has_posts_on_or_after_since:
+            break
 
         next_before = find_before_token(page_html)
         if next_before is None or next_before == before:

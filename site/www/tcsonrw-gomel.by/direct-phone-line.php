@@ -1,5 +1,8 @@
 <?php
 require_once __DIR__ . '/lib/security.php';
+require_once __DIR__ . '/lib/auth.php';
+require_once __DIR__ . '/lib/public_page_visibility.php';
+include __DIR__ . '/db_connection.php';
 
 $directLinePageTitle = 'Прямая телефонная линия';
 $directLineSiteName = 'ТЦСОН Железнодорожного района г. Гомеля';
@@ -29,6 +32,8 @@ $directLineHotlineHref = '+375232349956';
 
 $seoTitleMeta = $directLinePageTitle . ' - ' . $directLineSiteName;
 $seoDescriptionMeta = 'График работы прямой телефонной линии и горячей линии ТЦСОН Железнодорожного района г. Гомеля.';
+
+bootstrapPublicPageVisibility($conn, '/direct-phone-line.php', $directLinePageTitle);
 ?>
 <!DOCTYPE html>
 <html lang="ru">

@@ -173,6 +173,7 @@ $seoRobotsMeta = 'noindex,nofollow';
         selectedChatUuid: null,
         selectedChat: null,
         mode: 'chat',
+        messageDrafts: {},
         imageGalleryItems: [],
         activeImageIndex: null,
         manualUnreadChatUuids: new Set()
@@ -264,6 +265,67 @@ $seoRobotsMeta = 'noindex,nofollow';
         }
 
         refs.favicon.href = baseFaviconHref;
+    }
+
+    function getActiveDraftKey() {
+        if (messengerState.mode === 'create') {
+            return '__create__';
+        }
+
+        if (messengerState.selectedChatUuid) {
+            return `chat:${messengerState.selectedChatUuid}`;
+        }
+
+        return '';
+    }
+
+    function getDraftValue(key) {
+        if (!key) {
+            return '';
+        }
+
+        return Object.prototype.hasOwnProperty.call(messengerState.messageDrafts, key)
+            ? messengerState.messageDrafts[key]
+            : '';
+    }
+
+    function setDraftValue(key, value) {
+        if (!key) {
+            return;
+        }
+
+        const normalizedValue = String(value || '');
+        if (normalizedValue === '') {
+            delete messengerState.messageDrafts[key];
+            return;
+        }
+
+        messengerState.messageDrafts[key] = normalizedValue;
+    }
+
+    function captureComposerDraft() {
+        const key = getActiveDraftKey();
+        if (!key) {
+            return;
+        }
+
+        setDraftValue(key, refs.messageBody.value);
+    }
+
+    function clearComposerDraft() {
+        const key = getActiveDraftKey();
+        if (!key) {
+            return;
+        }
+
+        delete messengerState.messageDrafts[key];
+    }
+
+    function restoreComposerDraft() {
+        const draftValue = getDraftValue(getActiveDraftKey());
+        if (refs.messageBody.value !== draftValue) {
+            refs.messageBody.value = draftValue;
+        }
     }
 
     async function fetchJson(url, options = {}) {
@@ -735,6 +797,7 @@ $seoRobotsMeta = 'noindex,nofollow';
     }
 
     function openCreateMode() {
+        captureComposerDraft();
         messengerState.mode = 'create';
         messengerState.selectedChatUuid = null;
         messengerState.selectedChat = null;
@@ -908,6 +971,7 @@ $seoRobotsMeta = 'noindex,nofollow';
             refs.leaveChatButton.disabled = true;
             refs.messageBody.placeholder = 'Первое сообщение нового задания';
             updateFilePickerState();
+            restoreComposerDraft();
             return;
         }
 
@@ -929,6 +993,7 @@ $seoRobotsMeta = 'noindex,nofollow';
             refs.leaveChatButton.disabled = true;
             refs.messageBody.placeholder = 'Сообщение по выбранному заданию';
             updateFilePickerState();
+            restoreComposerDraft();
             return;
         }
 
@@ -1004,6 +1069,7 @@ $seoRobotsMeta = 'noindex,nofollow';
         refs.leaveChatButton.disabled = false;
         refs.messageBody.placeholder = 'Сообщение по выбранному заданию';
         updateFilePickerState();
+        restoreComposerDraft();
 
         refs.chatParticipants.querySelectorAll('[data-add-participant]').forEach((button) => {
             button.addEventListener('click', () => openParticipantModal().catch((error) => showFlash('error', error.message)));
@@ -1168,6 +1234,7 @@ $seoRobotsMeta = 'noindex,nofollow';
 
     async function loadChat(chatUuid, preserveSelection = false, focusMessageUuid = '', options = {}) {
         const { markRead = true, clearManualUnread = true } = options;
+        captureComposerDraft();
         messengerState.mode = 'chat';
         messengerState.selectedChatUuid = chatUuid;
         const focusQuery = focusMessageUuid ? `&focus_message_uuid=${encodeURIComponent(focusMessageUuid)}` : '';
@@ -1254,6 +1321,7 @@ $seoRobotsMeta = 'noindex,nofollow';
             throw new Error(data.error ? `${data.error.code}: ${data.error.message}` : 'Ошибка создания задания');
         }
 
+        clearComposerDraft();
         refs.messageForm.reset();
         updateFilePickerSummary();
         messengerState.mode = 'chat';
@@ -1290,6 +1358,7 @@ $seoRobotsMeta = 'noindex,nofollow';
             throw new Error(data.error ? `${data.error.code}: ${data.error.message}` : 'Ошибка отправки сообщения');
         }
 
+        clearComposerDraft();
         refs.messageForm.reset();
         updateFilePickerSummary();
         await loadChats();
@@ -1367,6 +1436,7 @@ $seoRobotsMeta = 'noindex,nofollow';
 
     refs.refreshChatsButton.addEventListener('click', () => loadChats().catch((error) => showFlash('error', error.message)));
     refs.messageForm.addEventListener('submit', (event) => submitMessage(event).catch((error) => showFlash('error', error.message)));
+    refs.messageBody.addEventListener('input', captureComposerDraft);
     refs.messageBody.addEventListener('keydown', (event) => {
         if (event.key !== 'Enter') {
             return;
@@ -1381,7 +1451,10 @@ $seoRobotsMeta = 'noindex,nofollow';
             refs.messageForm.requestSubmit();
         }
     });
-    refs.messageFiles.addEventListener('change', updateFilePickerSummary);
+    refs.messageFiles.addEventListener('change', () => {
+        updateFilePickerSummary();
+        restoreComposerDraft();
+    });
     bindFileDropTarget(refs.messageBody);
     bindFileDropTarget(refs.messageFilesDropzone);
     refs.openCreateChatButton.addEventListener('click', openCreateMode);

@@ -6,6 +6,7 @@ require_once __DIR__ . '/lib/auth.php';
 require_once __DIR__ . '/lib/news_routing.php';
 require_once __DIR__ . '/lib/photo_ordering.php';
 require_once __DIR__ . '/lib/news_management.php';
+require_once __DIR__ . '/lib/public_page_visibility.php';
 include __DIR__ . '/db_connection.php';
 require_once __DIR__ . '/Parsedown.php';
 
@@ -62,6 +63,8 @@ if ($storedSlug !== '') {
         redirectTo($canonicalNewsPath, 301);
     }
 }
+
+bootstrapPublicPageVisibility($conn, $canonicalNewsPath, (string) ($news['title'] ?? 'Событие'));
 
 $stmtPhotos = $conn->prepare('SELECT id, filename FROM photos WHERE news_id = ? ORDER BY sort_order ASC, id ASC');
 $photos = array();
@@ -694,13 +697,17 @@ $nextItem = fetchNewsDetailAdjacentItem($conn, $type, $date, $newsId, 'next');
             background: #0f1513;
             box-shadow: var(--news-detail-shadow);
             isolation: isolate;
+            height: 90vh;
+            height: 90svh;
         }
 
         .news-detail-video__player {
             display: block;
             width: 100%;
+            height: 100%;
             min-height: 360px;
             background: #0f1513;
+            object-fit: contain;
         }
 
         .news-detail-video__caption {

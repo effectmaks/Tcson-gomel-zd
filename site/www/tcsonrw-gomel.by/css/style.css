@@ -1353,6 +1353,16 @@ html.special .admin-page {
   mask-image: url("../img/socialnaya podderzhka.svg");
 }
 
+.footer-nav__icon--corruption {
+  background-color: transparent;
+  background-image: url("../img/corupcia.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
 .footer-nav__icon--news {
   -webkit-mask-image: url("../img/sobytiya.svg");
   mask-image: url("../img/sobytiya.svg");
@@ -1496,6 +1506,10 @@ html.special .admin-page {
   background: transparent;
 }
 
+.footer-social__link--instagram {
+  background: transparent;
+}
+
 .footer-social__link--ok {
   background: transparent;
 }
@@ -1504,24 +1518,21 @@ html.special .admin-page {
   display: block;
   width: 54px;
   height: 54px;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  -webkit-mask-size: contain;
-  mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 48px 48px;
 }
 
 .footer-social__icon--telegram {
-  background-color: #229ed9;
-  -webkit-mask-image: url("../img/icons8-телеграм.svg");
-  mask-image: url("../img/icons8-телеграм.svg");
+  background-image: url("../img/footer-social-telegram.svg");
+}
+
+.footer-social__icon--instagram {
+  background-image: url("../img/footer-social-instagram.svg");
 }
 
 .footer-social__icon--ok {
-  background: url("../img/icons8-одноклассники.svg") no-repeat center / contain;
-  -webkit-mask-image: none;
-  mask-image: none;
+  background-image: url("../img/footer-social-ok.svg");
 }
 
 .footer-feedback__text {

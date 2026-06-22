@@ -1,5 +1,8 @@
 <?php
 require_once __DIR__ . '/lib/security.php';
+require_once __DIR__ . '/lib/auth.php';
+require_once __DIR__ . '/lib/public_page_visibility.php';
+include __DIR__ . '/db_connection.php';
 
 $appealsPageTitle = 'Электронные обращения граждан и юрлиц';
 $appealsSiteName = 'ТЦСОН Железнодорожного района г. Гомеля';
@@ -78,6 +81,8 @@ $appealsReferenceLinks = array(
 
 $seoTitleMeta = $appealsPageTitle . ' - ' . $appealsSiteName;
 $seoDescriptionMeta = 'Порядок подачи электронных обращений граждан и юридических лиц через государственную систему обращения.бел.';
+
+bootstrapPublicPageVisibility($conn, '/electronic-appeals.php', $appealsPageTitle);
 ?>
 <!DOCTYPE html>
 <html lang="ru">

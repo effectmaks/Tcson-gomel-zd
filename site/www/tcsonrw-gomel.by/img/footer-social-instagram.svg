@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Creator: CorelDRAW (Оценочная версия) -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="12.7mm" height="12.7mm" version="1.0" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 37.65 37.65"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <linearGradient id="igGrad" x1="8%" y1="92%" x2="92%" y2="8%">
+   <stop offset="0%" style="stop-color:#FEDA75;stop-opacity:1"/>
+   <stop offset="30%" style="stop-color:#FA7E1E;stop-opacity:1"/>
+   <stop offset="58%" style="stop-color:#D62976;stop-opacity:1"/>
+   <stop offset="80%" style="stop-color:#962FBF;stop-opacity:1"/>
+   <stop offset="100%" style="stop-color:#4F5BD5;stop-opacity:1"/>
+  </linearGradient>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:white;stroke-width:0.59;stroke-miterlimit:22.9256}
+    .fil0 {fill:white}
+    .fil1 {fill:url(#igGrad);fill-rule:nonzero}
+   ]]>
+  </style>
+ </defs>
+ <g id="Слой_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <rect class="fil0 str0" x="4.76" y="4.06" width="28.31" height="27.29"/>
+  <path class="fil1" d="M10.98 0c-6.05,0 -10.98,4.93 -10.98,10.98l0 15.69c0,6.05 4.93,10.98 10.98,10.98l15.69 0c6.05,0 10.98,-4.93 10.98,-10.98l0 -15.69c0,-6.05 -4.93,-10.98 -10.98,-10.98l-15.69 0zm18.83 6.27c0.87,0 1.57,0.7 1.57,1.57 0,0.87 -0.7,1.57 -1.57,1.57 -0.87,0 -1.57,-0.7 -1.57,-1.57 0,-0.87 0.7,-1.57 1.57,-1.57zm-10.98 3.14c5.19,0 9.41,4.22 9.41,9.41 0,5.19 -4.22,9.41 -9.41,9.41 -5.19,0 -9.41,-4.22 -9.41,-9.41 0,-5.19 4.22,-9.41 9.41,-9.41zm0 3.14c-3.46,0 -6.27,2.81 -6.27,6.27 0,3.46 2.81,6.27 6.27,6.27 3.46,0 6.27,-2.81 6.27,-6.27 0,-3.46 -2.81,-6.27 -6.27,-6.27z"/>
+ </g>
+</svg>

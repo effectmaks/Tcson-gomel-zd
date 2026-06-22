@@ -1,5 +1,8 @@
 <?php
 require_once __DIR__ . '/lib/security.php';
+require_once __DIR__ . '/lib/auth.php';
+require_once __DIR__ . '/lib/public_page_visibility.php';
+include __DIR__ . '/db_connection.php';
 
 $structurePageTitle = 'Структура учреждения';
 $structureSiteName = 'Территориальный центр социального обслуживания населения Железнодорожного района г. Гомеля';
@@ -75,6 +78,8 @@ $structureDepartments = array(
 
 $seoTitleMeta = 'Структура учреждения - ТЦСОН Железнодорожного района г. Гомеля';
 $seoDescriptionMeta = 'Структура и руководство ТЦСОН Железнодорожного района г. Гомеля: директор, заместитель директора, отделения и ответственные специалисты.';
+
+bootstrapPublicPageVisibility($conn, '/structure.php', $structurePageTitle);
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -298,8 +303,8 @@ $seoDescriptionMeta = 'Структура и руководство ТЦСОН �
         }
 
         .structure-card__icon--person {
-            -webkit-mask: url("/img/kontakty.svg") no-repeat center / contain;
-            mask: url("/img/kontakty.svg") no-repeat center / contain;
+            -webkit-mask: url("/img/man.svg") no-repeat center / contain;
+            mask: url("/img/man.svg") no-repeat center / contain;
         }
 
         .structure-card__icon--info {
@@ -655,12 +660,10 @@ $seoDescriptionMeta = 'Структура и руководство ТЦСОН �
 <?php include __DIR__ . '/header.php'; ?>
 <main class="main structure-page-main">
     <div class="structure-layout container">
-        <aside class="section-side-menu" aria-label="Меню раздела О центре">
-            <h2 class="section-side-menu__title">О центре</h2>
-            <nav class="section-side-menu__nav">
-                <a class="section-side-menu__link is-active" href="/structure.php" aria-current="page">Структура учреждения</a>
-            </nav>
-        </aside>
+        <?php
+        $aboutMenuActive = 'structure';
+        include __DIR__ . '/about-side-menu.php';
+        ?>
 
         <div class="structure-content">
             <nav class="structure-breadcrumbs" aria-label="Хлебные крошки">

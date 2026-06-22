@@ -15,6 +15,25 @@ function redirectTo($path, $statusCode = 302)
     exit();
 }
 
+function normalizeInternalRedirectPath($value, $default = '/')
+{
+    $fallback = trim((string) $default);
+    if ($fallback === '' || $fallback[0] !== '/') {
+        $fallback = '/';
+    }
+
+    $path = preg_replace('/[\x00-\x1F\x7F]+/u', '', trim((string) $value));
+    if (!is_string($path) || $path === '') {
+        return $fallback;
+    }
+
+    if ($path[0] !== '/' || strpos($path, '//') === 0) {
+        return $fallback;
+    }
+
+    return $path;
+}
+
 function getIntFromGet($key)
 {
     if (!isset($_GET[$key])) {

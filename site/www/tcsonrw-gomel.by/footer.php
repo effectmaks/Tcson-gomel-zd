@@ -41,7 +41,7 @@
                 </a>
               </li>
               <li class="footer-nav__item">
-                <a href="/" class="footer-nav__link">
+                <a href="/department/" class="footer-nav__link">
                   <span class="footer-nav__icon footer-nav__icon--departments" aria-hidden="true"></span>
                   <span>Отделения</span>
                   <span class="footer-nav__arrow" aria-hidden="true"></span>
@@ -56,8 +56,8 @@
               </li>
               <li class="footer-nav__item">
                 <a href="/anti-corruption.php" class="footer-nav__link">
-                  <span class="footer-nav__icon footer-nav__icon--support" aria-hidden="true"></span>
-                  <span>Социальная поддержка</span>
+                  <span class="footer-nav__icon footer-nav__icon--corruption" aria-hidden="true"></span>
+                  <span>Противодействие коррупции</span>
                   <span class="footer-nav__arrow" aria-hidden="true"></span>
                 </a>
               </li>
@@ -69,7 +69,7 @@
                 </a>
               </li>
               <li class="footer-nav__item">
-                <a href="/#support" class="footer-nav__link">
+                <a href="/gossocpodderzhka-invalidov.php" class="footer-nav__link">
                   <span class="footer-nav__icon footer-nav__icon--benefits" aria-hidden="true"></span>
                   <span>Госсоцподдержка инвалидов</span>
                   <span class="footer-nav__arrow" aria-hidden="true"></span>
@@ -129,6 +129,9 @@
           <div class="footer-social">
             <a href="https://t.me/tcsonrw_gomel" class="footer-social__link footer-social__link--telegram" aria-label="Telegram" target="_blank" rel="noopener noreferrer">
               <span class="footer-social__icon footer-social__icon--telegram" aria-hidden="true"></span>
+            </a>
+            <a href="https://www.instagram.com/osrai_zhelezka?igsh=Z3R0cmtianJvcjZw" class="footer-social__link footer-social__link--instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+              <span class="footer-social__icon footer-social__icon--instagram" aria-hidden="true"></span>
             </a>
             <a href="https://ok.ru/group/70000006257887" class="footer-social__link footer-social__link--ok" aria-label="Одноклассники" target="_blank" rel="noopener noreferrer">
               <span class="footer-social__icon footer-social__icon--ok" aria-hidden="true"></span>

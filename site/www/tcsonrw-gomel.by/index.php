@@ -5,6 +5,8 @@ require_once __DIR__ . '/lib/security.php';
 require_once __DIR__ . '/lib/auth.php';
 require_once __DIR__ . '/lib/news_routing.php';
 require_once __DIR__ . '/lib/photo_ordering.php';
+require_once __DIR__ . '/lib/public_page_visibility.php';
+require_once __DIR__ . '/department/data.php';
 include __DIR__ . '/db_connection.php';
 
 ensureNewsSlugInfrastructure($conn);
@@ -19,8 +21,13 @@ function fetchHomepageFeed($conn, $limit)
         WHERE news_id = news.id
         ORDER BY sort_order ASC, id ASC
         LIMIT 1
-    ) AS filename
-    FROM news
+        ) AS filename
+    FROM news";
+    if (!isLoggedIn()) {
+        $sql .= " WHERE " . getPublishedNewsVisibilitySqlCondition('news');
+    }
+
+    $sql .= "
     ORDER BY news.date DESC, news.id DESC
     LIMIT " . $limit;
 
@@ -127,7 +134,50 @@ $homepageOfficialSiteCards = array(
     ),
 );
 
+$homepageFaqItems = array(
+    array(
+        'question' => 'Вопрос: Здравствуйте . Вот уже 4 раз нам назначают адресную помощь. По предварительным расчетам нам не хватает ежемесячно 630 рублей. Ранее помощь назначалась на 6 месяцев. Семья многодетная – 5 детей. На какой срок, вероятно, назначат ГАСП? Исходя из чего комиссия выбирает срок выплаты данного вида помощи?',
+        'answer' => array(
+            'Ответ: В соответствии с п.3 Положения о порядке предоставления государственной адресной социальной помощи, утвержденным Указом Президента Республики Беларусь от 19.01.2021 № 41 «О государственной адресной социальной помощи» ежемесячное социальное пособие семьям (гражданам) предоставляется с месяца подачи заявления о предоставлении государственной адресной социальной помощи по форме, утверждаемой Министерством труда и социальной защиты (далее - месяц обращения), на период от 1 до 6 месяцев в течение 12 месяцев, начиная с месяца обращения, с учетом принимаемых семьей ( гражданином ) мер по улучшению своего материалього положения , при повторных обращениях - с учетом выполнения трудоспособным членом семьи (гражданином) мероприятий, указанных в плане по самостоятельному улучшению материального положения для трудоспособных членов семьи (граждан), если такой план разработан комиссией.',
+            'По решению комиссии многодетным семьям ежемесячное социальное пособие может быть предоставлено на период более 6 месяцев (но не более 12 месяцев). Каждая трудная жизненная ситуация семьи рассматривается комиссией индивидуально.',
+        ),
+    ),
+    array(
+        'question' => 'Вопрос: Здравствуйте. Можно узнать, будет ли учитываться в мой доход стипендия дочери при подаче документов на адресную помощь, учитывая то, что она обучается в другом городе к её деньгам я отношения не имею?',
+        'answer' => array(
+            'Ответ: В соответствии с п.11 Положения о порядке предоставления государственной адресной социальной помощи, утвержденным Указом Президента Республики Беларусь от 19.01.2021 № 41 «О государственной адресной социальной помощи», лица, получающие профессионально-техническое, среднее специальное и высшее образование в дневной форме получения образования на территории Республики Беларусь, при предоставлении ежемесячного социального пособия, как правило, учитываются в составе семьи их родителей.',
+        ),
+    ),
+    array(
+        'question' => 'Вопрос: Здравствуйте , подскажите , если за инвалидом 1 группы (24 года ) оформлен человек по уходу , то может инвалид посещать отделение дневного пребывания для инвалидов в территориальном центре ? Если может , то сколько часов инвалид может там находится?',
+        'answer' => array(
+            'Ответ: Граждане, за которыми осуществляется уход лицами, получающими пособие по уходу за инвалидом I группы либо лицом, достигшим 80-летнего возраста, имеют право на социальные услуги, оказываемые территориальными центрами социального обслуживания населения (далее - ТЦСОН) в форме полустационарного социального обслуживания. Постановлением Совета Министров Республики Беларусь от 27.12.2012 № 1218 «О некоторых вопросах оказания социальных услуг» утвержден перечень бесплатных и общедоступных социальных услуг государственных учреждений социального обслуживания с нормами и нормативами обеспеченности граждан этими услугами.',
+            'Социальные услуги предоставляются инвалидам, не имеющим медицинских противопоказаний (для заключения договора оказания социальных услуг в форме полустационарного социального обслуживания граждане представляют медицинскую справку о состоянии здоровья, содержащую информацию о наличии медицинских показаний и ( или ) отсутствии медицинских противопоказаний для оказания социальных услуг в форме полустационарного социального обслуживания).',
+            'Данные услуги инвалидам 1 группы ТЦСОН оказываются бесплатно.',
+            'Время пребывания инвалида устанавливается в соответствии с режимом работы ТЦСОН.',
+        ),
+    ),
+);
+
 $homepageFeedPages = array_chunk(fetchHomepageFeed($conn, 9), 3);
+$homepageDepartmentItems = getDepartmentItems();
+$homepagePrimaryIntakeItem = null;
+
+foreach ($homepageDepartmentItems as $homepageDepartmentIndex => $homepageDepartmentItem) {
+    if ((string) ($homepageDepartmentItem['id'] ?? '') !== 'primary-intake') {
+        continue;
+    }
+
+    $homepagePrimaryIntakeItem = $homepageDepartmentItem;
+    unset($homepageDepartmentItems[$homepageDepartmentIndex]);
+    break;
+}
+
+if (is_array($homepagePrimaryIntakeItem)) {
+    $homepageDepartmentItems[] = $homepagePrimaryIntakeItem;
+}
+
+$homepageDepartmentItems = array_values($homepageDepartmentItems);
 
 $seoTitleMeta = 'ТЦСОН Железнодорожного района г. Гомеля — официальный сайт';
 $seoDescriptionMeta = 'Главная страница ТЦСОН Железнодорожного района г. Гомеля: новости, мероприятия и доступ в административную часть сайта.';
@@ -183,6 +233,11 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
             margin-bottom: 48px;
         }
 
+        .homepage-section > * {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
         .homepage-section--first {
             padding-top: calc(var(--homepage-header-offset) + 24px);
         }
@@ -191,12 +246,169 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
             position: relative;
         }
 
+        .homepage-departments {
+            position: relative;
+        }
+
+        .homepage-departments__shell {
+            position: relative;
+            padding: 32px;
+            border-radius: 32px;
+            background:
+                radial-gradient(circle at top left, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.84) 36%, rgba(247, 243, 236, 0.88) 100%);
+            border: 1px solid rgba(221, 227, 218, 0.78);
+            box-shadow: 0 20px 48px rgba(28, 63, 51, 0.08);
+            overflow: hidden;
+        }
+
+        .homepage-departments__shell::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.78), transparent 42%),
+                radial-gradient(circle at 100% 100%, rgba(247, 236, 226, 0.82), transparent 36%);
+            pointer-events: none;
+        }
+
+        .homepage-departments__top {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .homepage-departments__heading {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 0;
+        }
+
+        .homepage-departments__accent {
+            width: 4px;
+            height: 30px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, #d73331 0%, #f06f4f 100%);
+            box-shadow: 0 6px 18px rgba(215, 51, 49, 0.24);
+            flex: 0 0 4px;
+        }
+
+        .homepage-departments__title {
+            margin: 0;
+            color: #1a352d;
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .homepage-departments__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #20604a;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: color .2s ease, transform .2s ease;
+        }
+
+        .homepage-departments__link::after {
+            content: "→";
+            color: currentColor;
+            font-size: 20px;
+            line-height: 1;
+            transition: transform .2s ease, color .2s ease;
+        }
+
+        .homepage-departments__link:hover,
+        .homepage-departments__link:focus-visible {
+            color: #d73331;
+            transform: translateX(2px);
+        }
+
+        .homepage-departments__link:hover::after,
+        .homepage-departments__link:focus-visible::after {
+            transform: translateX(4px);
+        }
+
+        .homepage-departments__grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .homepage-departments__card {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            min-height: 156px;
+            padding: 22px 24px;
+            border-radius: 36px;
+            background: rgba(255, 255, 255, 0.98);
+            border: 1px solid rgba(214, 221, 213, 0.96);
+            box-shadow: 0 10px 24px rgba(26, 53, 45, 0.06);
+            text-decoration: none;
+            transition: background-color .24s ease, box-shadow .24s ease, border-color .24s ease, transform .24s ease;
+        }
+
+        .homepage-departments__card:hover,
+        .homepage-departments__card:focus-visible {
+            transform: translateY(-4px);
+            background: linear-gradient(135deg, rgba(244, 248, 241, 0.98), rgba(251, 247, 239, 0.98));
+            border-color: rgba(32, 96, 74, 0.24);
+            box-shadow: 0 18px 36px rgba(26, 53, 45, 0.11);
+        }
+
+        .homepage-departments__icon-shell {
+            width: 136px;
+            height: 136px;
+            border-radius: 36px;
+            background: linear-gradient(180deg, #f6f6eb 0%, #efefe1 100%);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 136px;
+        }
+
+        .homepage-departments__icon {
+            width: 86px;
+            height: 86px;
+            background-color: #1f5f47;
+            -webkit-mask: var(--department-icon) no-repeat center / contain;
+            mask: var(--department-icon) no-repeat center / contain;
+            opacity: 0.96;
+        }
+
+        .homepage-departments__card-body {
+            flex: 1 1 auto;
+            display: flex;
+            align-items: center;
+            min-width: 0;
+        }
+
+        .homepage-departments__card-title {
+            margin: 0;
+            color: #213a33;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.18;
+        }
+
         .homepage-official-sites {
             position: relative;
         }
 
         .homepage-official-sites__shell {
             position: relative;
+            width: 100%;
             padding: 28px 0 18px;
             border-radius: 28px;
             background: transparent;
@@ -234,51 +446,10 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
             line-height: 1.14;
         }
 
-        .homepage-official-sites__controls {
-            display: inline-flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .homepage-official-sites__arrow {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            border: 1px solid rgba(24, 61, 49, 0.2);
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.98);
-            color: #1c4032;
-            box-shadow: 0 6px 16px rgba(29, 59, 45, 0.08);
-            cursor: pointer;
-            transition: transform .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease;
-        }
-
-        .homepage-official-sites__arrow:hover,
-        .homepage-official-sites__arrow:focus-visible {
-            color: #c62b30;
-            border-color: rgba(198, 43, 48, 0.28);
-            transform: translateY(-1px);
-            box-shadow: 0 8px 18px rgba(29, 59, 45, 0.12);
-        }
-
-        .homepage-official-sites__arrow[disabled] {
-            opacity: 0.45;
-            cursor: default;
-            transform: none;
-            box-shadow: 0 4px 10px rgba(29, 59, 45, 0.06);
-        }
-
-        .homepage-official-sites__arrow-icon {
-            font-size: 34px;
-            line-height: 1;
-        }
-
         .homepage-official-sites__viewport {
             overflow: hidden;
-            padding: 8px 2px 18px;
-            margin: -8px -2px -18px;
+            padding: 8px 0 18px;
+            margin: -8px 0 -18px;
         }
 
         .homepage-official-sites__track {
@@ -387,17 +558,18 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
         .homepage-banner__shell {
             position: relative;
             overflow: visible;
+            width: 100%;
         }
 
         .homepage-banner__viewport-shell {
             position: relative;
-            padding: 0 68px;
+            padding: 0;
         }
 
         .homepage-banner__viewport {
             overflow: hidden;
-            padding: 18px 22px 42px;
-            margin: -18px -22px -42px;
+            padding: 18px 0 42px;
+            margin: -18px 0 -42px;
         }
 
         .homepage-banner__track {
@@ -538,47 +710,6 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
             color: #fff;
         }
 
-        .homepage-banner__arrow {
-            position: absolute;
-            top: 50%;
-            z-index: 2;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            margin-top: -22px;
-            border: 1px solid rgba(35, 72, 58, 0.18);
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.96);
-            color: #2b5744;
-            box-shadow:
-                0 8px 18px rgba(22, 47, 36, 0.08),
-                0 2px 5px rgba(22, 47, 36, 0.04);
-            cursor: pointer;
-            transition: transform .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease;
-        }
-
-        .homepage-banner__arrow:hover,
-        .homepage-banner__arrow:focus-visible {
-            color: #c62b30;
-            border-color: rgba(198, 43, 48, 0.22);
-            transform: translateY(-1px);
-        }
-
-        .homepage-banner__arrow--prev {
-            left: 0;
-        }
-
-        .homepage-banner__arrow--next {
-            right: 0;
-        }
-
-        .homepage-banner__arrow-icon {
-            font-size: 24px;
-            line-height: 1;
-        }
-
         .homepage-banner__dots {
             position: absolute;
             left: 50%;
@@ -610,6 +741,7 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
 
         .homepage-events__shell {
             position: relative;
+            width: 100%;
             padding: 0;
             background: transparent;
             box-shadow: none;
@@ -666,13 +798,13 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
 
         .homepage-events__viewport {
             overflow: hidden;
-            padding: 18px 18px 28px;
-            margin: -18px -18px -28px;
+            padding: 18px 0 28px;
+            margin: -18px 0 -28px;
         }
 
         .homepage-events__viewport-shell {
             position: relative;
-            padding: 0 60px;
+            padding: 0;
         }
 
         .homepage-events__track {
@@ -837,47 +969,6 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
         .homepage-event-card__more:hover,
         .homepage-event-card__more:focus-visible {
             color: #ab2026;
-        }
-
-        .homepage-events__arrow {
-            position: absolute;
-            top: 50%;
-            z-index: 2;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            margin-top: -22px;
-            border: 1px solid rgba(35, 72, 58, 0.18);
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.96);
-            color: #2b5744;
-            box-shadow:
-                0 8px 18px rgba(22, 47, 36, 0.08),
-                0 2px 5px rgba(22, 47, 36, 0.04);
-            cursor: pointer;
-            transition: transform .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease;
-        }
-
-        .homepage-events__arrow:hover,
-        .homepage-events__arrow:focus-visible {
-            color: #c62b30;
-            border-color: rgba(198, 43, 48, 0.22);
-            transform: translateY(-1px);
-        }
-
-        .homepage-events__arrow--prev {
-            left: 0;
-        }
-
-        .homepage-events__arrow--next {
-            right: 0;
-        }
-
-        .homepage-events__arrow-icon {
-            font-size: 24px;
-            line-height: 1;
         }
 
         .homepage-events__dots {
@@ -1222,6 +1313,260 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
             white-space: nowrap;
         }
 
+        .homepage-faq {
+            position: relative;
+        }
+
+        .homepage-faq__shell {
+            position: relative;
+            overflow: hidden;
+            padding: 34px 40px 32px;
+            border-radius: 30px;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0) 34%),
+                radial-gradient(circle at 88% 18%, rgba(220, 238, 229, 0.9), rgba(220, 238, 229, 0) 32%),
+                linear-gradient(135deg, #f7f4ee 0%, #fdfbf7 48%, #eff5ef 100%);
+            border: 1px solid rgba(24, 74, 54, 0.08);
+            box-shadow:
+                0 4px 10px rgba(22, 47, 36, 0.07),
+                0 1px 3px rgba(22, 47, 36, 0.04);
+        }
+
+        .homepage-faq__shell::before {
+            content: "";
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 54px;
+            background: url("/img/loop-vert.png") repeat-y left top / 100% auto;
+            opacity: 0.32;
+            pointer-events: none;
+        }
+
+        .homepage-faq__top {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 28px;
+        }
+
+        .homepage-faq__icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            flex: 0 0 70px;
+            border-radius: 50%;
+            background: linear-gradient(180deg, #195d46 0%, #0f4938 100%);
+            color: #fff;
+            font-size: 44px;
+            font-weight: 700;
+            line-height: 1;
+            box-shadow:
+                0 12px 22px rgba(17, 74, 53, 0.16),
+                inset 0 1px 0 rgba(255, 255, 255, 0.22);
+        }
+
+        .homepage-faq__title {
+            margin: 0 0 6px;
+            color: #15553d;
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.14;
+        }
+
+        .homepage-faq__subtitle {
+            margin: 0;
+            color: #2f453b;
+            font-size: 16px;
+            line-height: 1.45;
+        }
+
+        .homepage-faq__grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px 22px;
+        }
+
+        .homepage-faq__item {
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.98);
+            border: 1px solid rgba(24, 74, 54, 0.08);
+            box-shadow:
+                0 4px 10px rgba(22, 47, 36, 0.08),
+                0 1px 3px rgba(22, 47, 36, 0.05);
+            overflow: hidden;
+            transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease;
+        }
+
+        .homepage-faq__item[open] {
+            border-color: rgba(21, 85, 61, 0.18);
+            box-shadow:
+                0 8px 18px rgba(22, 47, 36, 0.11),
+                0 2px 5px rgba(22, 47, 36, 0.05);
+        }
+
+        .homepage-faq__summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            min-height: 88px;
+            padding: 20px 24px;
+            cursor: pointer;
+            list-style: none;
+        }
+
+        .homepage-faq__summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .homepage-faq__question {
+            color: #1f3028;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .homepage-faq__chevron {
+            width: 14px;
+            height: 14px;
+            flex: 0 0 14px;
+            border-right: 3px solid #1d5a43;
+            border-bottom: 3px solid #1d5a43;
+            transform: rotate(45deg) translateY(-2px);
+            transition: transform .18s ease;
+        }
+
+        .homepage-faq__item[open] .homepage-faq__chevron {
+            transform: rotate(225deg) translate(-2px, -2px);
+        }
+
+        .homepage-faq__answer {
+            padding: 0 24px 22px;
+            border-top: 1px solid rgba(24, 74, 54, 0.1);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(247, 244, 238, 0.48));
+        }
+
+        .homepage-faq__answer p {
+            margin: 16px 0 0;
+            color: #2e4038;
+            font-size: 15px;
+            line-height: 1.58;
+        }
+
+        .homepage-faq__cta {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            width: fit-content;
+            margin: 28px auto 0;
+            color: #1b563f;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.2;
+            text-decoration: none;
+            transition: color .18s ease, transform .18s ease;
+        }
+
+        .homepage-faq__cta:hover,
+        .homepage-faq__cta:focus-visible {
+            color: #b61f2c;
+            transform: translateX(2px);
+        }
+
+        .homepage-faq__cta-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            flex: 0 0 30px;
+            border-radius: 50%;
+            background: #1b563f;
+            color: #fff;
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        .homepage-faq__cta-arrow {
+            color: currentColor;
+            font-size: 32px;
+            line-height: 1;
+        }
+
+        @media (max-width: 900px) {
+            .homepage-faq__shell {
+                padding: 28px 28px 28px;
+            }
+
+            .homepage-faq__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .homepage-faq__shell {
+                padding: 24px 18px 24px;
+                border-radius: 22px;
+            }
+
+            .homepage-faq__shell::before {
+                width: 30px;
+            }
+
+            .homepage-faq__top {
+                align-items: flex-start;
+                gap: 12px;
+                margin-bottom: 20px;
+            }
+
+            .homepage-faq__icon {
+                width: 52px;
+                height: 52px;
+                flex-basis: 52px;
+                font-size: 34px;
+            }
+
+            .homepage-faq__title {
+                font-size: 24px;
+            }
+
+            .homepage-faq__subtitle {
+                font-size: 14px;
+            }
+
+            .homepage-faq__summary {
+                min-height: 78px;
+                padding: 18px;
+            }
+
+            .homepage-faq__question {
+                font-size: 15px;
+            }
+
+            .homepage-faq__answer {
+                padding: 0 18px 18px;
+            }
+
+            .homepage-faq__answer p {
+                font-size: 14px;
+            }
+
+            .homepage-faq__cta {
+                align-items: flex-start;
+                margin-top: 22px;
+                font-size: 15px;
+            }
+        }
+
         @media (max-width: 900px) {
             .homepage-page {
                 --homepage-carousel-page-gap: 22px;
@@ -1244,11 +1589,6 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
             .homepage-official-sites__slide {
                 min-width: calc((100% - (2 * var(--homepage-official-sites-gap))) / 3);
                 max-width: calc((100% - (2 * var(--homepage-official-sites-gap))) / 3);
-            }
-
-            .homepage-official-sites__arrow {
-                width: 42px;
-                height: 42px;
             }
 
             .homepage-banner__viewport {
@@ -1276,8 +1616,16 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
                 justify-content: space-between;
             }
 
-            .homepage-banner__arrow {
-                display: none;
+            .homepage-departments__shell {
+                padding: 28px 24px;
+            }
+
+            .homepage-departments__title {
+                font-size: 28px;
+            }
+
+            .homepage-departments__grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
             .homepage-events__top {
@@ -1302,10 +1650,6 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
                 gap: 22px;
                 padding-left: 0;
                 padding-right: 0;
-            }
-
-            .homepage-events__arrow {
-                display: none;
             }
 
             .homepage-service-panel__shell {
@@ -1376,6 +1720,61 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
                 padding: 16px 18px 18px;
             }
 
+            .homepage-departments__top {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 20px;
+            }
+
+            .homepage-departments__shell {
+                padding: 24px 18px;
+                border-radius: 24px;
+            }
+
+            .homepage-departments__accent {
+                height: 24px;
+            }
+
+            .homepage-departments__title {
+                font-size: 24px;
+            }
+
+            .homepage-departments__link {
+                font-size: 16px;
+            }
+
+            .homepage-departments__grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .homepage-departments__card {
+                min-height: 0;
+                padding: 20px;
+                gap: 18px;
+                border-radius: 26px;
+            }
+
+            .homepage-departments__card-body {
+                align-items: center;
+            }
+
+            .homepage-departments__icon-shell {
+                width: 92px;
+                height: 92px;
+                border-radius: 24px;
+                flex-basis: 92px;
+            }
+
+            .homepage-departments__icon {
+                width: 56px;
+                height: 56px;
+            }
+
+            .homepage-departments__card-title {
+                font-size: 17px;
+            }
+
             .homepage-official-sites__shell {
                 padding: 18px 0 16px;
                 border-radius: 22px;
@@ -1399,10 +1798,6 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
 
             .homepage-official-sites__title {
                 font-size: 24px;
-            }
-
-            .homepage-official-sites__controls {
-                align-self: flex-end;
             }
 
             .homepage-official-sites__track {
@@ -1443,19 +1838,6 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
             .homepage-official-sites__slide {
                 min-width: 100%;
                 max-width: 100%;
-            }
-
-            .homepage-official-sites__controls {
-                gap: 10px;
-            }
-
-            .homepage-official-sites__arrow {
-                width: 38px;
-                height: 38px;
-            }
-
-            .homepage-official-sites__arrow-icon {
-                font-size: 24px;
             }
 
             .homepage-banner__dots {
@@ -1550,15 +1932,6 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
     <section class="homepage-section homepage-section--first homepage-banner container" aria-label="Актуальные баннеры" data-carousel data-carousel-autoplay="12000">
         <div class="homepage-banner__shell">
             <div class="homepage-banner__viewport-shell">
-                <?php if (count($homepageBannerSlides) > 1): ?>
-                <button class="homepage-banner__arrow homepage-banner__arrow--prev" type="button" aria-label="Предыдущий баннер" data-carousel-prev>
-                    <span class="homepage-banner__arrow-icon" aria-hidden="true">‹</span>
-                </button>
-                <button class="homepage-banner__arrow homepage-banner__arrow--next" type="button" aria-label="Следующий баннер" data-carousel-next>
-                    <span class="homepage-banner__arrow-icon" aria-hidden="true">›</span>
-                </button>
-                <?php endif; ?>
-
                 <div class="homepage-banner__viewport">
                     <div class="homepage-banner__track" data-carousel-track>
                         <?php foreach ($homepageBannerSlides as $index => $slide): ?>
@@ -1630,6 +2003,41 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
         </div>
     </section>
 
+    <section class="homepage-section homepage-departments container" aria-labelledby="homepage-departments-title">
+        <div class="homepage-departments__shell">
+            <div class="homepage-departments__top">
+                <div class="homepage-departments__heading">
+                    <span class="homepage-departments__accent" aria-hidden="true"></span>
+                    <h2 class="homepage-departments__title" id="homepage-departments-title">Отделения учреждения</h2>
+                </div>
+                <a class="homepage-departments__link" href="/department/">Все отделения</a>
+            </div>
+            <div class="homepage-departments__grid">
+                <?php foreach ($homepageDepartmentItems as $departmentIndex => $departmentItem): ?>
+                <?php
+                    $departmentId = (string) ($departmentItem['id'] ?? '');
+                    $departmentHref = (string) ($departmentItem['detail_url'] ?? '/department/');
+                    $departmentTitle = (string) ($departmentItem['title'] ?? '');
+                    $departmentIcon = getDepartmentIconPath($departmentId);
+                ?>
+                <a
+                    class="homepage-departments__card"
+                    href="<?php echo e($departmentHref); ?>"
+                    style="--department-icon: url('<?php echo e($departmentIcon); ?>');"
+                    aria-label="<?php echo e($departmentTitle); ?>"
+                >
+                    <span class="homepage-departments__icon-shell" aria-hidden="true">
+                        <span class="homepage-departments__icon"></span>
+                    </span>
+                    <span class="homepage-departments__card-body">
+                        <span class="homepage-departments__card-title"><?php echo e($departmentTitle); ?></span>
+                    </span>
+                </a>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
     <section class="homepage-section homepage-events container" data-carousel data-carousel-autoplay="10000">
         <div class="homepage-events__shell">
             <div class="homepage-events__top">
@@ -1644,15 +2052,6 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
             <div class="homepage-empty">Материалы пока не добавлены.</div>
             <?php else: ?>
             <div class="homepage-events__viewport-shell">
-                <?php if (count($homepageFeedPages) > 1): ?>
-                <button class="homepage-events__arrow homepage-events__arrow--prev" type="button" aria-label="Предыдущий слайд" data-carousel-prev>
-                    <span class="homepage-events__arrow-icon" aria-hidden="true">‹</span>
-                </button>
-                <button class="homepage-events__arrow homepage-events__arrow--next" type="button" aria-label="Следующий слайд" data-carousel-next>
-                    <span class="homepage-events__arrow-icon" aria-hidden="true">›</span>
-                </button>
-                <?php endif; ?>
-
                 <div class="homepage-events__viewport">
                     <div class="homepage-events__track" data-carousel-track>
                         <?php foreach ($homepageFeedPages as $page): ?>
@@ -1810,20 +2209,46 @@ $seoDescriptionMeta = 'Главная страница ТЦСОН Железно
         </div>
     </section>
 
+    <section class="homepage-section homepage-faq container" aria-labelledby="homepage-faq-title">
+        <div class="homepage-faq__shell">
+            <div class="homepage-faq__top">
+                <span class="homepage-faq__icon" aria-hidden="true">?</span>
+                <div>
+                    <h2 class="homepage-faq__title" id="homepage-faq-title">Вопросы и ответы</h2>
+                    <p class="homepage-faq__subtitle">Найдите ответы на часто задаваемые вопросы</p>
+                </div>
+            </div>
+
+            <div class="homepage-faq__grid">
+                <?php foreach ($homepageFaqItems as $faqItem): ?>
+                <details class="homepage-faq__item">
+                    <summary class="homepage-faq__summary">
+                        <span class="homepage-faq__question"><?php echo e($faqItem['question'] ?? ''); ?></span>
+                        <span class="homepage-faq__chevron" aria-hidden="true"></span>
+                    </summary>
+                    <div class="homepage-faq__answer">
+                        <?php foreach (($faqItem['answer'] ?? array()) as $faqParagraph): ?>
+                        <p><?php echo e($faqParagraph); ?></p>
+                        <?php endforeach; ?>
+                    </div>
+                </details>
+                <?php endforeach; ?>
+            </div>
+
+            <a class="homepage-faq__cta" href="/contacts.php">
+                <span class="homepage-faq__cta-icon" aria-hidden="true">?</span>
+                <span>Не нашли ответ? Обратитесь к специалисту центра</span>
+                <span class="homepage-faq__cta-arrow" aria-hidden="true">→</span>
+            </a>
+        </div>
+    </section>
+
     <section class="homepage-section homepage-official-sites container" aria-labelledby="homepage-official-sites-title" data-card-carousel>
         <div class="homepage-official-sites__shell">
             <div class="homepage-official-sites__top">
                 <div class="homepage-official-sites__heading">
                     <img class="homepage-official-sites__title-icon" src="/img/www.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
                     <h2 class="homepage-official-sites__title" id="homepage-official-sites-title">Официальные сайты</h2>
-                </div>
-                <div class="homepage-official-sites__controls">
-                    <button class="homepage-official-sites__arrow" type="button" aria-label="Предыдущие сайты" data-card-carousel-prev>
-                        <span class="homepage-official-sites__arrow-icon" aria-hidden="true">‹</span>
-                    </button>
-                    <button class="homepage-official-sites__arrow" type="button" aria-label="Следующие сайты" data-card-carousel-next>
-                        <span class="homepage-official-sites__arrow-icon" aria-hidden="true">›</span>
-                    </button>
                 </div>
             </div>
 

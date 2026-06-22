@@ -1,5 +1,8 @@
 <?php
 require_once __DIR__ . '/lib/security.php';
+require_once __DIR__ . '/lib/auth.php';
+require_once __DIR__ . '/lib/public_page_visibility.php';
+include __DIR__ . '/db_connection.php';
 
 function formatAntiCorruptionFileSize($path)
 {
@@ -118,6 +121,8 @@ $antiCorruptionDocuments = array(
 
 $seoTitleMeta = $antiCorruptionPageTitle . ' - ' . $antiCorruptionSiteName;
 $seoDescriptionMeta = 'Информация об антикоррупционной деятельности ТЦСОН Железнодорожного района г. Гомеля, состав комиссии и план мероприятий на 2026 год.';
+
+bootstrapPublicPageVisibility($conn, '/anti-corruption.php', $antiCorruptionPageTitle);
 ?>
 <!DOCTYPE html>
 <html lang="ru">

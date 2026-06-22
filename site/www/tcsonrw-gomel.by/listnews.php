@@ -5,10 +5,12 @@ require_once __DIR__ . '/lib/security.php';
 require_once __DIR__ . '/lib/auth.php';
 require_once __DIR__ . '/lib/news_routing.php';
 require_once __DIR__ . '/lib/photo_ordering.php';
+require_once __DIR__ . '/lib/public_page_visibility.php';
 include __DIR__ . '/db_connection.php';
 
 ensureNewsSlugInfrastructure($conn);
 ensurePhotoSortInfrastructure($conn);
+bootstrapPublicPageVisibility($conn, '/listnews.php', 'Новости');
 
 function buildEventsArchiveExcerpt($value)
 {
@@ -34,7 +36,12 @@ function formatEventsArchiveDate($value)
 
 function fetchEventsArchiveTotal($conn, $type)
 {
-    $stmt = $conn->prepare("SELECT COUNT(*) AS total FROM news WHERE LOWER(type) = ?");
+    $sql = "SELECT COUNT(*) AS total FROM news WHERE LOWER(type) = ?";
+    if (!isLoggedIn()) {
+        $sql .= " AND " . getPublishedNewsVisibilitySqlCondition('news');
+    }
+
+    $stmt = $conn->prepare($sql);
     if (!$stmt) {
         return 0;
     }
@@ -50,8 +57,7 @@ function fetchEventsArchiveTotal($conn, $type)
 
 function fetchEventsArchiveItems($conn, $type, $limit, $offset)
 {
-    $stmt = $conn->prepare(
-        "SELECT news.*, (
+    $sql = "SELECT news.*, (
             SELECT filename
             FROM photos
             WHERE news_id = news.id
@@ -59,10 +65,16 @@ function fetchEventsArchiveItems($conn, $type, $limit, $offset)
             LIMIT 1
         ) AS filename
         FROM news
-        WHERE LOWER(type) = ?
+        WHERE LOWER(type) = ?";
+    if (!isLoggedIn()) {
+        $sql .= " AND " . getPublishedNewsVisibilitySqlCondition('news');
+    }
+
+    $sql .= "
         ORDER BY news.date DESC, news.id DESC
-        LIMIT ? OFFSET ?"
-    );
+        LIMIT ? OFFSET ?";
+
+    $stmt = $conn->prepare($sql);
 
     if (!$stmt) {
         return array();
