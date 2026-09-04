@@ -6,6 +6,8 @@ import hashlib
 import html
 import json
 import re
+import shutil
+import subprocess
 import sys
 import urllib.error
 import urllib.parse
@@ -131,6 +133,113 @@ TITLE_OVERRIDES = {
     8610: "Моя семья - самая, самая",
     8616: "Забота и уважение",
     8622: "Безопасность детей у открытых окон",
+    9191: "Ярмарка вакансий 24 июля",
+    9192: "Безопасный отдых у водоёмов",
+    9193: "Правила возврата средств социальной реабилитации",
+    9194: "Занятие по ясному языку",
+    9198: "Личный приём и прямая телефонная линия 22 июля",
+    9199: "Как не попасться на удочку телефонных мошенников",
+    9200: "Районный этап конкурса «SuperПРОФИ-2026»",
+    9201: "Социальный работник: условия и стоимость услуги",
+    9202: "Старт конкурса «SuperПРОФИ-2026»",
+    9206: "Ольга Демидова — победитель «SuperПРОФИ-2026»",
+    9208: "В районе выбрали молодого SuperПРОФИ",
+    9209: "Как организовать уход за пожилым родственником",
+    9210: "Кожная пятніца — роднае, сваё!",
+    9211: "Финансовая грамотность для пожилых граждан",
+    9212: "Мини-марафон чистоты в ТЦСОН",
+    9213: "Секреты долголетия: травяные чаи и настои",
+    9214: "Пейзажная живопись в клубе «Радуга надежды»",
+    9215: "С 1 августа повышается бюджет прожиточного минимума",
+    9216: "Компоненты здорового образа жизни",
+    9217: "Материальная помощь школьникам из многодетных семей",
+    9218: "Новые размеры государственной адресной помощи",
+    9219: "Уютный вечерок в ТЦСОН",
+    9220: "Терапия красотой для посетительниц ТЦСОН",
+    9221: "Музыка и танец в санатории БЖД",
+    9222: "Выездной приём документов к школе",
+    9225: "Чистый четверг в ТЦСОН",
+    9228: "Открытый диалог «Антистресс»",
+    9229: "Проект «Пульс страны» в Гомеле",
+    9237: "Лекция о здоровье пищеварения",
+    9238: "Урок кибербезопасности для пожилых",
+    9239: "Студия рукоделия в ТЦСОН",
+    9240: "Студия рукоделия в ТЦСОН",
+    9241: "Что изменится для белорусов в августе",
+    9242: "Как распознать мошенников в интернете",
+    9243: "Ветерану Ольге Маринович — 104 года",
+    9245: "Активный досуг в мире бильярда",
+    9246: "В Гомеле поздравили ветерана со 104-летием",
+    9248: "В Гомеле поздравили ветерана со 104-летием",
+    9249: "Рабочий визит Инны Губар в ТЦСОН",
+    9254: "Выездная акция «Территория заботы и уважения»",
+    9258: "Валентине Трояновской — 101 год",
+    9260: "Услуга няни от государства",
+    9261: "Приём документов к школе на Ломоносова",
+    9266: "Серебряный возраст — новые горизонты",
+    9267: "Чистый четверг в ТЦСОН",
+    9271: "Каждая пятница — родное, своё!",
+    9272: "Кибербезопасность: как не стать мишенью",
+    9273: "Звонит незнакомец? Будьте бдительны",
+    9274: "Онлайн-шопинг и защита персональных данных",
+    9282: "Активное и здоровое долголетие",
+    9284: "Ситуационная помощь в ТЦСОН",
+    9286: "Чистый четверг с заботой",
+    9288: "ТЦСОН участвует в акции «Дом без пожара»",
+    9295: "Кожная пятніца — роднае, сваё!",
+    9296: "Путь к семье",
+    9306: "Благодарим за оказанное содействие",
+    9309: "От камеры обскуры до смартфона",
+    9312: "Профилактика киберпреступлений",
+    9316: "Единый день информирования в ТЦСОН",
+    9318: "Кожная пятніца — роднае, сваё!",
+    9329: "Портфели для первоклассников с инвалидностью",
+    9336: "Спасибо за помощь первоклассникам",
+    9338: "Сервис «Проверь.Бел» против мошенников",
+    9339: "Фразы, с которых начинают мошенники",
+    9340: "Акция «Соберём портфель первокласснику!»",
+    9346: "Новые правила направления в социальные учреждения",
+    9347: "Танцевальная программа «Уютный вечерок»",
+    9348: "Акция «Уступи дорогу пешеходу!»",
+    9349: "Профилактика пожаров для пожилых",
+    9350: "Как защитить пожилых от мошенников",
+    9358: "Психологический диалог «Моя жизнь — мой выбор»",
+    9360: "Занятие по безопасности дорожного движения",
+    9361: "Брифинг о социальной поддержке семей",
+}
+KIND_OVERRIDES = {
+    9194: "мероприятие",
+    9212: "мероприятие",
+    9219: "мероприятие",
+    9220: "мероприятие",
+    9221: "мероприятие",
+    9222: "мероприятие",
+    9225: "мероприятие",
+    9228: "мероприятие",
+    9229: "мероприятие",
+    9237: "мероприятие",
+    9238: "мероприятие",
+    9239: "мероприятие",
+    9243: "мероприятие",
+    9245: "мероприятие",
+    9249: "мероприятие",
+    9254: "мероприятие",
+    9258: "мероприятие",
+    9261: "мероприятие",
+    9266: "мероприятие",
+    9267: "мероприятие",
+    9282: "мероприятие",
+    9286: "мероприятие",
+    9288: "мероприятие",
+    9329: "мероприятие",
+    9340: "мероприятие",
+    9347: "мероприятие",
+    9348: "мероприятие",
+    9349: "мероприятие",
+    9351: "мероприятие",
+    9358: "мероприятие",
+    9360: "мероприятие",
+    9361: "мероприятие",
 }
 
 
@@ -237,7 +346,11 @@ def extract_photos(chunk: str) -> list[str]:
 
 
 def extract_videos(chunk: str) -> list[str]:
-    urls = re.findall(r'<video[^>]+src="([^"]+)"', chunk)
+    urls = re.findall(
+        r'tgme_widget_message_video_wrap[^>]*>.*?<video[^>]+src="([^"]+)"',
+        chunk,
+        flags=re.DOTALL,
+    )
     unique: list[str] = []
     seen: set[str] = set()
     for url in urls:
@@ -272,7 +385,7 @@ def parse_posts(page_html: str, channel: str, tz_name: str) -> list[Post]:
                 published_at_local=published_local.isoformat(),
                 local_date=published_local.date().isoformat(),
                 title=title,
-                kind=classify_post(text),
+                kind=KIND_OVERRIDES.get(post_id, classify_post(text)),
                 text=text,
                 photos=photos,
                 videos=videos,
@@ -486,6 +599,80 @@ def iter_posts(channel: str, since: date, until: date | None, tz_name: str) -> I
     return deduped.values()
 
 
+def iter_browser_export(
+    export_path: Path,
+    channel: str,
+    since: date,
+    until: date | None,
+    tz_name: str,
+) -> Iterable[Post]:
+    timezone = ZoneInfo(tz_name)
+    raw_posts = json.loads(export_path.read_text(encoding="utf-8"))
+    if not isinstance(raw_posts, list):
+        raise ValueError("browser export must contain a JSON list")
+
+    posts: dict[int, Post] = {}
+    for item in raw_posts:
+        if not isinstance(item, dict):
+            continue
+        published_at = str(item.get("datetime", "")).strip()
+        if not published_at:
+            continue
+        published_utc = datetime.fromisoformat(published_at)
+        published_local = published_utc.astimezone(timezone)
+        if published_local.date() < since:
+            continue
+        if until and published_local.date() > until:
+            continue
+
+        post_id = int(item.get("post_id", 0))
+        if post_id <= 0:
+            continue
+        text = str(item.get("text", "")).strip()
+        photos = unique_urls(item.get("photos", []))
+        videos = unique_urls(item.get("videos", []))[:1]
+        video_thumbnails = unique_urls(item.get("video_thumbs", []))
+
+        # Animated Telegram emoji are rendered as tiny WebM <video> elements
+        # inside the text and must not be attached as the post video.
+        if videos and not video_thumbnails and all(".webm" in url.lower() for url in videos):
+            videos = []
+
+        # Telegram omits the source URL for some large videos. Keep the visible
+        # preview as the required media instead of creating a text-only record.
+        if not photos and not videos and video_thumbnails:
+            photos = video_thumbnails[:1]
+
+        posts[post_id] = Post(
+            channel=channel,
+            post_id=post_id,
+            url=f"https://t.me/{channel}/{post_id}",
+            published_at_utc=published_utc.isoformat(),
+            published_at_local=published_local.isoformat(),
+            local_date=published_local.date().isoformat(),
+            title=build_title(text, post_id),
+            kind=KIND_OVERRIDES.get(post_id, classify_post(text)),
+            text=text,
+            photos=photos,
+            videos=videos,
+        )
+
+    return (posts[post_id] for post_id in sorted(posts))
+
+
+def unique_urls(values: object) -> list[str]:
+    if not isinstance(values, list):
+        return []
+    result: list[str] = []
+    seen: set[str] = set()
+    for value in values:
+        url = str(value).strip()
+        if url and url not in seen:
+            result.append(url)
+            seen.add(url)
+    return result
+
+
 def save_post(post: Post, output_dir: Path, target_dir: Path | None = None) -> Path:
     folder_name = f"{post.local_date}-{post.post_id}-{slugify(post.title)}"
     post_dir = target_dir or (output_dir / post.channel / post.local_date / folder_name)
@@ -504,7 +691,7 @@ def save_post(post: Post, output_dir: Path, target_dir: Path | None = None) -> P
         try:
             download_file(photo_url, target)
             photo_paths.append(f"photos/{target_name}")
-        except urllib.error.URLError as error:
+        except Exception as error:
             print(f"warn: photo download failed for {photo_url}: {error}", file=sys.stderr)
 
     video_paths: list[str] = []
@@ -516,6 +703,10 @@ def save_post(post: Post, output_dir: Path, target_dir: Path | None = None) -> P
         try:
             download_file(video_url, target)
             video_paths.append(f"videos/{target_name}")
+        except Exception as error:
+            print(f"warn: video download failed for {video_url}: {error}", file=sys.stderr)
+            continue
+        try:
             screenshot_paths.extend(
                 create_video_screenshots(
                     target,
@@ -523,8 +714,6 @@ def save_post(post: Post, output_dir: Path, target_dir: Path | None = None) -> P
                     f"screenshots/video-{index:02d}",
                 )
             )
-        except urllib.error.URLError as error:
-            print(f"warn: video download failed for {video_url}: {error}", file=sys.stderr)
         except Exception as error:
             print(f"warn: screenshot generation failed for {video_url}: {error}", file=sys.stderr)
 
@@ -607,10 +796,11 @@ def guess_video_extension(url: str) -> str:
 
 def create_video_screenshots(video_path: Path, output_dir: Path, rel_prefix: str, count: int = 5) -> list[str]:
     if imageio is None:
-        return []
+        return create_video_thumbnail_with_quicklook(video_path, output_dir, rel_prefix)
     output_dir.mkdir(parents=True, exist_ok=True)
-    reader = imageio.get_reader(str(video_path), format="ffmpeg")
+    reader = None
     try:
+        reader = imageio.get_reader(str(video_path), format="ffmpeg")
         meta = reader.get_meta_data()
         fps = float(meta.get("fps") or 0.0)
         duration = float(meta.get("duration") or 0.0)
@@ -630,8 +820,47 @@ def create_video_screenshots(video_path: Path, output_dir: Path, rel_prefix: str
             imageio.imwrite(str(target), frame)
             saved.append(f"{rel_prefix}/{target.name}")
         return saved
+    except Exception:
+        return create_video_thumbnail_with_quicklook(video_path, output_dir, rel_prefix)
     finally:
-        reader.close()
+        if reader is not None:
+            reader.close()
+
+
+def create_video_thumbnail_with_quicklook(video_path: Path, output_dir: Path, rel_prefix: str) -> list[str]:
+    qlmanage = shutil.which("qlmanage")
+    if not qlmanage:
+        return []
+
+    output_dir.mkdir(parents=True, exist_ok=True)
+    temp_dir = output_dir / ".ql-temp"
+    temp_dir.mkdir(parents=True, exist_ok=True)
+    try:
+        subprocess.run(
+            [
+                qlmanage,
+                "-t",
+                "-s",
+                "1200",
+                "-o",
+                str(temp_dir),
+                str(video_path),
+            ],
+            check=True,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            timeout=20,
+        )
+        generated = next(temp_dir.glob(f"{video_path.name}.*"), None)
+        if generated is None:
+            return []
+        target = output_dir / "01.png"
+        shutil.move(str(generated), target)
+        return [f"{rel_prefix}/{target.name}"]
+    except Exception:
+        return []
+    finally:
+        shutil.rmtree(temp_dir, ignore_errors=True)
 
 
 def is_reaction_line(value: str) -> bool:
@@ -670,7 +899,20 @@ def event_score(keyword: str, text: str) -> int:
 def run(args: argparse.Namespace) -> int:
     since = date.fromisoformat(args.since)
     until = date.fromisoformat(args.until) if args.until else None
-    posts = list(iter_posts(args.channel, since, until, args.timezone))
+    if args.browser_export:
+        posts = list(
+            iter_browser_export(
+                Path(args.browser_export).resolve(),
+                args.channel,
+                since,
+                until,
+                args.timezone,
+            )
+        )
+    else:
+        posts = list(iter_posts(args.channel, since, until, args.timezone))
+    skipped_post_ids = set(args.skip_post_ids or [])
+    posts = [post for post in posts if post.post_id not in skipped_post_ids]
     if args.first_only:
         posts = posts[:1]
     elif args.limit is not None:
@@ -693,6 +935,8 @@ def run(args: argparse.Namespace) -> int:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Download public Telegram channel posts into markdown files.")
     parser.add_argument("--channel", default="tcsonrw_gomel", help="Telegram channel username without @")
+    parser.add_argument("--browser-export", help="JSON export collected from the Telegram web page")
+    parser.add_argument("--skip-post-ids", nargs="*", type=int, default=[], help="Post IDs to omit")
     parser.add_argument("--since", required=True, help="Local date inclusive, format YYYY-MM-DD")
     parser.add_argument("--until", help="Local date inclusive, format YYYY-MM-DD")
     parser.add_argument("--timezone", default="Europe/Minsk", help="IANA timezone for date filtering")

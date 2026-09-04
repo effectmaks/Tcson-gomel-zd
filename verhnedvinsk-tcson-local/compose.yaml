@@ -1,0 +1,31 @@
+services:
+  mirror:
+    build:
+      context: .
+      target: mirror
+    environment:
+      TARGET_URL: ${TARGET_URL:-https://verhnedvinsk-tcson.by/}
+      OUTPUT_DIR: /output
+      # 0 downloads every reachable HTML page. Set 10 first to make a small test copy.
+      MAX_PAGES: ${MAX_PAGES:-0}
+      # Keep only the newest individual news pages. Set 0 to exclude news entirely.
+      MAX_NEWS: ${MAX_NEWS:-2}
+      # Set to true to honour robots.txt. The supplied target blocks its media paths there.
+      RESPECT_ROBOTS: ${RESPECT_ROBOTS:-false}
+      IMAGE_MAX_WIDTH: ${IMAGE_MAX_WIDTH:-1600}
+      IMAGE_WEBP_QUALITY: ${IMAGE_WEBP_QUALITY:-72}
+      MINIFY_JS: ${MINIFY_JS:-true}
+      REQUEST_TIMEOUT: ${REQUEST_TIMEOUT:-30}
+    volumes:
+      - ./site:/output
+
+  web:
+    image: nginx:1.27-alpine
+    depends_on:
+      mirror:
+        condition: service_completed_successfully
+    ports:
+      - "8080:80"
+    volumes:
+      - ./site:/usr/share/nginx/html:ro
+    restart: unless-stopped

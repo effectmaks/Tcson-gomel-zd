@@ -71,6 +71,11 @@ def find_posts(
     base = data_dir / channel
     for json_path in sorted(base.glob("*/*/post.json")):
         post = json.loads(json_path.read_text(encoding="utf-8"))
+        post_dir = json_path.parent
+        has_photos = any(path.is_file() for path in (post_dir / "photos").glob("*"))
+        has_video = any(path.is_file() for path in (post_dir / "videos").glob("*"))
+        if not has_photos and not has_video:
+            continue
         if kind != "all" and post.get("kind") != kind:
             continue
         post_id = int(post["post_id"])
@@ -82,7 +87,7 @@ def find_posts(
         result.append(
             {
                 "meta": post,
-                "dir": json_path.parent,
+                "dir": post_dir,
             }
         )
     return result

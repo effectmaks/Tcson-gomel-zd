@@ -5,10 +5,10 @@ function getDepartmentDetailContentHtml($departmentId)
     $contents = array(
         'primary-intake' => <<<'HTML_PRIMARY_INTAKE'
 <p>
- <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"><b><span style="color: #0000ff; font-size: 14pt;">Отделение первичного приема, информации, анализа и прогнозирования,</span></b> г. Гомель, ул. 50 лет БССР, д. 19, кабинет № 3, телефон 8 (0232) 34 98 99:</span><br>
+ <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"><b><span style="color: #0000ff; font-size: 14pt;">Отделение первичного приема, информации, анализа и прогнозирования,</span></b> г. Гомель, ул. 50 лет БССР, д. 19, кабинет № 3, телефон <a href="tel:+375232349899">8 (0232) 34-98-99</a>:</span><br>
  <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"><br>
  <b>заведующий отделением:</b> Волчкова Виктория Станиславовна</span><br>
- <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"><b>специалисты по социальной работе:</b> Бумажкова Светлана Александровна, Кушнерова Елена Николаевна, Сивакова Алеся Александровна, Сивакова Анастасия Александровна, Старикова Екатерина Николаевна, Оснач Кристина Юрьевна, телефон 8 (0232) 34 99 56, 8 (0232) 34 98 99</span><br>
+ <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"><b>специалисты по социальной работе:</b> Бумажкова Светлана Александровна, Кушнерова Елена Николаевна, Сивакова Алеся Александровна, Сивакова Анастасия Александровна, Старикова Екатерина Николаевна, Оснач Кристина Юрьевна, телефон <a href="tel:+375232349956">8 (0232) 34-99-56</a>, <a href="tel:+375232349899">8 (0232) 34-98-99</a>, <a href="tel:+375256604209">8 (025) 660-42-09</a></span><br>
  <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"><br>
  <b><span style="color: #0000ff; font-size: 14pt;">Режим работы:</span></b></span><br>
  <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"><br>
@@ -47,7 +47,7 @@ HTML_PRIMARY_INTAKE
  <strong>Отделение социальной поддержки населения,</strong> г. Гомель, ул. 50 лет БССР, д. 19, кабинет № 4
 </p>
 <p>
- <strong>заведующий отделением:</strong> Коржова Елена Викторовна, телефон 34-97-95
+ <strong>заведующий отделением:</strong> Коржова Елена Викторовна, телефон <a href="tel:+375232349795">8 (0232) 34-97-95</a>
 </p>
 <p>
  <strong>специалисты по социальной работе:</strong> Старикова Елена Владимировна, Рыженкова Жанна Михайловна, Клименко Екатерина Александровна, Лапейко Екатерина Александровна, Михеева Наталья Ивановна
@@ -67,6 +67,7 @@ HTML_PRIMARY_INTAKE
  Понедельник с 8-00 до 13.00<br>
  Вторник с 14.00 до 20.00<br>
  Среда с 8-00 до 13.00<br>
+ Четверг с 8-00 до 13.00<br>
  Пятница с 8-00 до 13.00<br>
  выходные дни: суббота, воскресенье
 </p>
@@ -87,12 +88,14 @@ HTML_SOCIAL_SUPPORT
 ,
         'guardianship' => <<<'HTML_GUARDIANSHIP'
 <p>
- <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"><b><span style="color: #0000ff; font-size: 14pt;">Отделение опеки и попечительства,</span></b> г. Гомель, ул. Юбилейная, д. 8, к. 2, кабинет № 10, телефон 55 00 36.</span>
+ <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"><b><span style="color: #0000ff; font-size: 14pt;">Отделение опеки и попечительства,</span></b> г. Гомель, ул. Юбилейная, д. 8, к. 2, кабинет № 10, телефон <a href="tel:+375232550036">8 (0232) 55-00-36</a>.</span>
 </p>
 <p>
  <strong>заведующий отделением:</strong> Коржова Карина Валерьевна<br>
- <strong>юрисконсульт отделения:</strong> Дорофеева Виталия Владимировна<br>
- <strong>специалисты по социальной работе:</strong> Безгинова Анастасия Анатольевна, Кухарева Ольга Григорьевна
+ <strong>юрисконсульт отделения:</strong><br>
+ Дорофеева Виталия Владимировна, кабинет № 10, телефон <a href="tel:+375232550036">8 (0232) 55-00-36</a>, <a href="tel:+375256604250">8 (025) 660-42-50 (Life)</a><br>
+ <strong>специалисты по социальной работе:</strong><br>
+ Безгинова Анастасия Анатольевна, кабинет № 10, телефон <a href="tel:+375232550036">8 (0232) 55-00-36</a>, <a href="tel:+375256604250">8 (025) 660-42-50 (Life)</a>
 </p>
 <p>
 </p>
@@ -114,13 +117,12 @@ HTML_SOCIAL_SUPPORT
 	<li>поиск кандидатов в опекуны и попечители, консультирование по требованиям к ним, их правам, обязанностям и ответственности;</li>
 	<li>информирование о порядке сбора документов, подачи заявлений и представления ежегодной отчетности по управлению имуществом подопечных;</li>
 	<li>содействие в оформлении документов для поселения в социальные пансионаты, в том числе детские, дома сопровождаемого проживания;</li>
-	<li>содействие в обеспечении граждан техническими средствами социальной реабилитации, в том числе из подменного фонда в рамках работы пункта проката.</li>
 </ul>
 HTML_GUARDIANSHIP
 ,
         'home-care' => <<<'HTML_HOME_CARE'
 <p>
- <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"><b><span style="color: #0000ff; font-size: 14pt;">Отделение социальной помощи на дому,</span></b> г. Гомель, ул. 50 лет БССР, д. 19, кабинет № 5, телефон 34-98-96, 34-98-97:</span><br>
+ <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"><b><span style="color: #0000ff; font-size: 14pt;">Отделение социальной помощи на дому,</span></b> г. Гомель, ул. 50 лет БССР, д. 19, кабинет № 5, телефон <a href="tel:+375232349896">8 (0232) 34-98-96</a>, <a href="tel:+375232349897">8 (0232) 34-98-97</a>, <a href="tel:+375256604243">8 (025) 660-42-43</a>:</span><br>
  <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"><br>
  <b>заведующий отделением:</b> Светюха Наталья Михайловна</span><br>
  <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"><b>специалисты по социальной работе:</b> Зернова Елена Михайловна, Зинченко Надежда Ивановна, Максимович Людмила Дмитриевна, Шаповалова Антонина Михайловна</span><br>
@@ -155,14 +157,13 @@ HTML_HOME_CARE
         'crisis-support' => <<<'HTML_CRISIS_SUPPORT'
 <p><strong>Отделение комплексной поддержки в кризисной ситуации</strong></p>
 <p><strong>Заведующий отделением:</strong> Дайнеко Ирина Сергеевна</p>
-<p><strong>Контакты:</strong> г. Гомель, ул. 50 лет БССР, д. 19, кабинет № 8, телефоны 34-97-92, 29-59-38, 28-86-00.</p>
 <p><strong>Специалисты отделения:</strong></p>
 <ul>
-    <li>психолог Кучик Алина Ивановна, кабинет № 8, телефон 34-97-92;</li>
-    <li>психолог Заостровская Екатерина Игоревна, кабинет № 8, телефон 29-59-38;</li>
-    <li>специалист по социальной работе Мельникова Алиса Владимировна, кабинет № 8, телефон 29-59-38;</li>
-    <li>специалист по социальной работе Тимошенко Светлана Михайловна, кабинет № 8, телефон 29-59-38;</li>
-    <li>специалист по социальной работе Демидова Ольга Николаевна, кабинет № 8, телефон 28-86-00.</li>
+    <li>психолог Кучик Алина Ивановна, кабинет № 8, телефон <a href="tel:+375232349792">8 (0232) 34-97-92</a>;</li>
+    <li>психолог Заостровская Екатерина Игоревна, кабинет № 8, телефон <a href="tel:+375232295938">8 (0232) 29-59-38</a>;</li>
+    <li>специалист по социальной работе Мельникова Алиса Владимировна, кабинет № 8, телефон <a href="tel:+375232295938">8 (0232) 29-59-38</a>;</li>
+    <li>специалист по социальной работе Тимошенко Светлана Михайловна, кабинет № 8, телефон <a href="tel:+375232295938">8 (0232) 29-59-38</a>;</li>
+    <li>специалист по социальной работе Демидова Ольга Николаевна, кабинет № 8, телефон <a href="tel:+375232288600">8 (0232) 28-86-00</a>.</li>
 </ul>
 <p><strong>Режим работы:</strong></p>
 <ul>
@@ -205,15 +206,15 @@ HTML_CRISIS_SUPPORT
  <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"><b><span style="color: #0000ff; font-size: 14pt;">Отделение дневного пребывания для граждан пожилого возраста:</span></b></span><br>
  <span style="font-size: 18.6667px;"><b><br>
  </b></span><span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"> <b>заведующий отделением:</b> Кухарева Людмила Сергеевна</span><br>
- <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"> <u>г.п.Яновичи, ул.Унишевского, д.36, </u>телефон 69 02 86:</span><br>
+ <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"> <u>г.п.Яновичи, ул.Унишевского, д.36, </u>телефон <a href="tel:+375232690286">8 (0232) 69-02-86</a>:</span><br>
  <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"> <b>руководитель кружка:</b> Барченко Светлана Ивановна</span>
 </p>
 <p>
- <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"> <u>аг.Зароново, ул.Приозёрная, д.2</u>, телефон 697 350:</span><br>
+ <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"> <u>аг.Зароново, ул.Приозёрная, д.2</u>, телефон <a href="tel:+375232697350">8 (0232) 697-350</a>:</span><br>
  <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"> <b>специалист по социальной работе: </b>Зимина Анна Григорьевна</span><br>
  <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"> <b>руководитель кружка:</b> Сивенко Ирина Петровна</span><br>
  <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"> </span><br>
- <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"> <u>аг.Шапечино, ул.Молодёжная, д.2Г</u>, телефон 695 248</span><br>
+ <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"> <u>аг.Шапечино, ул.Молодёжная, д.2Г</u>, телефон <a href="tel:+375232695248">8 (0232) 695-248</a></span><br>
  <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"> <b>специалист по социальной работе: </b>Постоялкина Ирина Валерьевна </span><br>
  <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"> <b>руководитель кружка: </b>Гурская Ольга Викторовна</span><span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"> </span><br>
  <span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"> </span><span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"> </span><span style="color: #000000; font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt;"><br>
@@ -859,9 +860,15 @@ HTML_ELDERLY_DAY_CARE
  <strong>Отделение дневного пребывания для граждан пожилого возраста</strong>
 </p>
 <p>
- <strong>Адрес:</strong> г. Гомель, ул. Юбилейная, 8/2<br>
- <strong>телефон:</strong> 8 (0232) 35-75-63, 35-75-58<br>
  <strong>заведующий отделением:</strong> Усова Лилия Евгеньевна
+</p>
+<p><strong>Специалисты отделения:</strong></p>
+<ul>
+ <li>специалист по социальной работе Чевдарь Анна Григорьевна, телефоны <a href="tel:+375232357558">8 (0232) 35-75-58</a>, <a href="tel:+375256604248">8 (025) 660-42-48 (Life)</a>;</li>
+ <li>специалист по социальной работе Малашенко Валентина Васильевна, телефоны <a href="tel:+375232357558">8 (0232) 35-75-58</a>, <a href="tel:+375256604248">8 (025) 660-42-48 (Life)</a>.</li>
+</ul>
+<p class="department-detail-social-link-row">
+ <strong>Группа инстаграм:</strong> <a href="https://www.instagram.com/superage_gomel" target="_blank" rel="noopener noreferrer" aria-label="Instagram отделения дневного пребывания для граждан пожилого возраста">@superage_gomel</a>
 </p>
 <p>
  <strong>Режим работы:</strong>
@@ -947,7 +954,7 @@ HTML_ELDERLY_DAY_CARE_UPDATED
 ,
         'rehabilitation' => <<<'HTML_REHABILITATION'
 <p>
- <span style="font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt; color: #000000;"><b><span style="color: #0000ff; font-size: 14pt;">Отделение социальной реабилитации, абилитации инвалидов,</span></b>&nbsp;</span>г.п.Сураж, ул.Шмырева, д.12, телефон 209 325:
+ <span style="font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt; color: #000000;"><b><span style="color: #0000ff; font-size: 14pt;">Отделение социальной реабилитации, абилитации инвалидов,</span></b>&nbsp;</span>г.п.Сураж, ул.Шмырева, д.12, телефон <a href="tel:+375232209325">8 (0232) 209-325</a>:
 </p>
 <p>
 </p>
@@ -955,9 +962,9 @@ HTML_ELDERLY_DAY_CARE_UPDATED
  <span style="font-family: &quot;Times New Roman&quot;, Times; font-size: 13pt; color: #000000;"> </span>
 </p>
 <p>
- <b>заведующий отделением: </b>Дубинская Екатерина Сергеевна, г. Гомель, ул. 50 лет БССР, д. 19, кабинет 16А, телефон 639 960<br>
+ <b>заведующий отделением: </b>Дубинская Екатерина Сергеевна, г. Гомель, ул. 50 лет БССР, д. 19, кабинет 16А, телефон <a href="tel:+375232639960">8 (0232) 639-960</a><br>
  <b>специалист по социальной работе:</b> Божко Наталья Сергеевна<br>
- <b>психолог:&nbsp;</b> Кириллова Татьяна Валентиновна, г. Гомель, 1-я Пролетарская, д.16, телефон 670 012<br>
+ <b>психолог:&nbsp;</b> Кириллова Татьяна Валентиновна, г. Гомель, 1-я Пролетарская, д.16, телефон <a href="tel:+375232670012">8 (0232) 670-012</a><br>
  <b>специалист по социальной работе: </b>_________________<br>
  <b>руководитель&nbsp;кружка: </b>Окунев Василий Васильевич<br>
  <b>рабочий по комплексному обслуживанию зданий и сооружений:</b> Китаев Андрей Анатольевич&nbsp;
@@ -1123,6 +1130,16 @@ HTML_REHABILITATION
 <p>
  <strong>Отделение социальной реабилитации, абилитации инвалидов.</strong>
 </p>
+<p>
+ <strong>Специалисты по социальной работе:</strong>
+</p>
+<ul>
+ <li>Соболенко Наталья Львовна — телефон <a href="tel:+375256604212">+375 (25) 660-42-12</a>;</li>
+ <li>Дембицкая Елена Павловна — телефон <a href="tel:+375256604212">+375 (25) 660-42-12</a>;</li>
+ <li>Шелепень Кирилл Павлович — телефон <a href="tel:+375256604213">+375 (25) 660-42-13</a>;</li>
+ <li>Тихонова Елена Викторовна — телефон <a href="tel:+375256604213">+375 (25) 660-42-13</a>;</li>
+ <li>Марченко Ирина Викторовна — телефон <a href="tel:+375232349799">8 (0232) 34-97-99</a>.</li>
+</ul>
 <p>
  <strong>Направления работы:</strong>
 </p>
@@ -1370,6 +1387,8 @@ function formatDepartmentDetailContentHtml($html, $departmentTitle = '')
     cleanDepartmentDetailNode($root);
     splitDepartmentDetailParagraphsByBreaks($document, $root);
     markDepartmentDetailHeadings($root, $departmentTitle);
+    removeDuplicateDepartmentDetailTitle($root, $departmentTitle);
+    simplifyDepartmentDetailContacts($document, $root);
     markDepartmentDetailListLikeParagraphs($root);
     removeEmptyDepartmentDetailNodes($root);
 
@@ -1560,6 +1579,124 @@ function markDepartmentDetailListLikeParagraphs(DOMNode $root)
             removeDepartmentDetailLeadingMarker($paragraph);
         }
     }
+}
+
+function simplifyDepartmentDetailContacts(DOMDocument $document, DOMNode $root)
+{
+    if (!$root instanceof DOMElement) {
+        return;
+    }
+
+    $paragraphs = iterator_to_array($root->getElementsByTagName('p'));
+    foreach ($paragraphs as $paragraph) {
+        if (!$paragraph->parentNode) {
+            continue;
+        }
+
+        $text = normalizeDepartmentDetailText($paragraph->textContent);
+        if ($text === '') {
+            continue;
+        }
+
+        if (preg_match('/^заведующ(?:ий|ая)\s+отделени(?:ем|я)\s*:/iu', $text)) {
+            $paragraph->parentNode->removeChild($paragraph);
+            continue;
+        }
+
+        if (preg_match('/^(адрес|телефон)\s*:/iu', $text)) {
+            $paragraph->parentNode->removeChild($paragraph);
+            continue;
+        }
+
+        if (!preg_match('/^(контакты|контактные телефоны отделения)\s*:/iu', $text)) {
+            continue;
+        }
+
+        $label = preg_match('/^контактные телефоны отделения\s*:/iu', $text)
+            ? 'Контактные телефоны отделения:'
+            : 'Контакты:';
+
+        while ($paragraph->firstChild) {
+            $paragraph->removeChild($paragraph->firstChild);
+        }
+
+        $strong = $document->createElement('strong');
+        $strong->appendChild($document->createTextNode($label));
+        $paragraph->appendChild($strong);
+        $paragraph->appendChild($document->createTextNode(' '));
+
+        $phones = extractDepartmentDetailPhoneLinks($document, $text);
+        foreach ($phones as $phoneIndex => $phoneItem) {
+            if ($phoneIndex > 0) {
+                $paragraph->appendChild($document->createTextNode(', '));
+            }
+
+            $link = $document->createElement('a');
+            $link->setAttribute('href', 'tel:' . $phoneItem['href']);
+            $link->appendChild($document->createTextNode($phoneItem['label']));
+            $paragraph->appendChild($link);
+        }
+
+        $paragraph->appendChild($document->createTextNode('.'));
+    }
+}
+
+function removeDuplicateDepartmentDetailTitle(DOMNode $root, $departmentTitle = '')
+{
+    if (!$root instanceof DOMElement) {
+        return;
+    }
+
+    $departmentTitle = normalizeDepartmentDetailText($departmentTitle);
+    if ($departmentTitle === '') {
+        return;
+    }
+
+    $titleSeen = false;
+    $paragraphs = iterator_to_array($root->getElementsByTagName('p'));
+    foreach ($paragraphs as $paragraph) {
+        if (!$paragraph->parentNode) {
+            continue;
+        }
+
+        $text = normalizeDepartmentDetailText($paragraph->textContent);
+        if ($text !== $departmentTitle) {
+            continue;
+        }
+
+        if (!$titleSeen) {
+            $titleSeen = true;
+            continue;
+        }
+
+        $paragraph->parentNode->removeChild($paragraph);
+    }
+}
+
+function extractDepartmentDetailPhoneLinks(DOMDocument $document, $text)
+{
+    $phones = array();
+
+    if (preg_match_all('/(?:\+375\s*\(\d{2}\)\s*\d{3}[-\s]?\d{2}[-\s]?\d{2}|8\s*\(0\d{3}\)\s*\d{2}[-\s]?\d{2}[-\s]?\d{2,3})/u', (string) $text, $matches)) {
+        foreach ($matches[0] as $match) {
+            $label = trim((string) preg_replace('/\s+/u', ' ', $match));
+            $hrefDigits = preg_replace('/\D+/u', '', $label);
+            if ($hrefDigits === '') {
+                continue;
+            }
+
+            if (str_starts_with($hrefDigits, '80')) {
+                $hrefDigits = '375' . substr($hrefDigits, 1);
+            }
+
+            $phones[] = array(
+                'label' => $label,
+                'href' => '+' . $hrefDigits,
+            );
+        }
+    }
+
+    return $phones;
 }
 
 function removeDepartmentDetailLeadingMarker(DOMNode $node)
